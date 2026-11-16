@@ -1040,9 +1040,44 @@ u32 LONG_CALL CheckIfMonsAreEqual(struct PartyPokemon *pokemon1, struct PartyPok
  *  @param heapID heap to use for allocations
  *  @return TRUE if can use item, FALSE otherwise
  */
+// Encore: the strongest Pokémon of each Gym Leader, in badge order (Johto then Kanto), for the Infinite Candy's cap
+static const u8 sGymAceLevels[16] = { 15, 21, 22, 29, 35, 40, 43, 50, 61, 62, 63, 65, 64, 66, 68, 70 };
+#define LEAGUE_ACE_LEVEL 60
+
+/**
+ *  @brief the highest level the Infinite Candy can raise a Pokémon to: the ace level of the lowest-level Gym the player
+ *         hasn't beaten yet. Johto's Gyms come first, then Lance, then Kanto's. With all 16 badges there's no cap.
+ */
+u32 LONG_CALL GetInfiniteCandyCap(void)
+{
+    struct PlayerProfile *profile = Sav2_PlayerData_GetProfileAddr(SaveBlock2_get());
+    u32 cap = 100;
+    for (int region = 0; region < 2 && cap == 100; region++) {
+        for (int i = region * 8; i < region * 8 + 8; i++) {
+            if (!PlayerProfile_TestBadgeFlag(profile, i) && sGymAceLevels[i] < cap) {
+                cap = sGymAceLevels[i];
+            }
+        }
+        if (region == 0 && cap == 100) {
+            cap = LEAGUE_ACE_LEVEL; // all Johto badges: Lance next, until the first Kanto badge
+            for (int i = 8; i < 16; i++) {
+                if (PlayerProfile_TestBadgeFlag(profile, i)) {
+                    cap = 100;
+                    break;
+                }
+            }
+        }
+    }
+    return cap;
+}
+
 BOOL LONG_CALL CanUseItemOnMonInParty(struct Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, u32 heapID)
 {
     struct PartyPokemon *mon = Party_GetMonByIndex(party, partyIdx);
+
+    if (itemID == ITEM_INFINITE_CANDY && GetMonData(mon, MON_DATA_LEVEL, NULL) >= GetInfiniteCandyCap()) {
+        return FALSE;
+    }
 
     if (GetItemData(itemID, ITEM_PARAM_LEVEL_UP, heapID) && GetMonData(mon, MON_DATA_LEVEL, NULL) == 100 && GetMonEvolution(party, mon, EVOCTX_LEVELUP, itemID, NULL)) {
         return TRUE;
