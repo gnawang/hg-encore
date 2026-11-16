@@ -247,7 +247,7 @@ and can't be tossed or sold.
 
 | Item | ID | How it works |
 |---|---|---|
-| Infinite Candy | 2685 (`ITEM_INFINITE_CANDY`) | Same item data as Rare Candy (HeartGold Generations' setup). Use it on a Pokémon from the bag; it's never used up and can be reused in a row. Works for level-100 evolutions like Rare Candy. It can't raise a Pokémon past the ace level of the next Gym: the lowest-level Gym whose badge you don't have, Johto's first (15, 21, 22, 29, 35, 40, 43, 50), then Lance (60) until the first Kanto badge, then Kanto's (61–70). With all 16 badges there's no cap, and a level-100 Pokémon can still evolve with it. Battles and Rare Candies aren't capped (`GetInfiniteCandyCap` in `src/pokemon.c`; update `sGymAceLevels` if Gym teams change). At the cap, choosing the Pokémon does nothing, as with a Rare Candy at level 100; there's no "won't have any effect" message. Tested in the emulator: caps of 15, 21, 60, 62 and none, with repeated use stopping at the cap |
+| Infinite Candy | 2685 (`ITEM_INFINITE_CANDY`) | Same item data as Rare Candy (HeartGold Generations' setup). Use it on a Pokémon from the bag; it's never used up and can be reused in a row. Works for level-100 evolutions like Rare Candy. It can't raise a Pokémon past the ace level of the next Gym: the lowest-level Gym whose badge you don't have, Johto's first (15, 21, 24, 29, 35, 40, 43, 50), then Lance (60) until the first Kanto badge, then Kanto's (61–70). With all 16 badges there's no cap, and a level-100 Pokémon can still evolve with it. Battles and Rare Candies aren't capped (`GetInfiniteCandyCap` in `src/pokemon.c`; update `sGymAceLevels` if Gym teams change). At the cap, choosing the Pokémon does nothing, as with a Rare Candy at level 100; there's no "won't have any effect" message. Tested in the emulator: caps of 15, 21, 60, 62 and none, with repeated use stopping at the cap |
 | Pocket Center | 2686 (`ITEM_POCKET_PKMN_CENTER`) | Use it from the bag, or register it to the Y button. Either way it runs common script 2074, which plays the heal jingle, heals the whole party (`heal_party`, the Pokémon Center command) and prints a message. Outside battle only |
 
 Files involved:
@@ -347,6 +347,10 @@ the Rocket Executives and Silver's fights from Azalea on, except the Cherrygrove
 - Fighting Dojo rematches, the League second round, the tag battles, Kimono Girls and Eusine use Encore's own teams, set by each trainer's theme and place in the
   story. Levels for the Dojo and second round follow Sacred Gold's range.
 - Later team changes:
+  - Whitney's levels follow Sacred Gold's 24 instead of 22, which had left her only a level above Bugsy, and a level-22 Jigglypuff leads her
+    team, so she has 4 Pokémon after Bugsy's 4 instead of dropping to 3. It uses Sing to buy turns for Defense Curl and Rollout, a preview of
+    Miltank's, with Draining Kiss for Fairy coverage, and Cute Charm to fit her Attract theme. Her team is 22–24.
+  - The first-round Elite Four climb from room to room: Will's ace is 55, Koga's 56, Bruno's 57 and Karen's 58, then Lance's 60. They were all 55.
   - Whitney's rematch has Wyrdeer instead of Stantler. Pryce's Sneasel is a Weavile. Chuck's Poliwrath uses Close Combat instead of Dynamic Punch.
   - Brock leads with Onix and ends with Golem. In his rematch Tyranitar leads, holding Smooth Rock, in place of Steelix.
   - Janine is set apart from Koga: Roserade and Tentacruel, both with Toxic Spikes, replace Ariados and Qwilfish, and her rematch has Weezing instead of Drapion.

@@ -382,9 +382,10 @@ Uses in battle: Super Potion, Super Potion
 
 | Pokémon | Level | Ability | Held item | Moves |
 |---|---|---|---|---|
-| Clefairy | 20 | Cute Charm | – | Metronome, Disarming Voice, Attract, Encore |
-| Teddiursa | 20 | Pickup | – | Baby-Doll Eyes, Lick, Attract, Metal Claw |
-| Miltank | 22 | Scrappy | Lum Berry | Rollout, Attract, Stomp, Milk Drink |
+| Jigglypuff | 22 | Cute Charm | – | Sing, Defense Curl, Rollout, Draining Kiss |
+| Clefairy | 22 | Cute Charm | – | Metronome, Disarming Voice, Attract, Encore |
+| Teddiursa | 22 | Pickup | – | Baby-Doll Eyes, Lick, Attract, Metal Claw |
+| Miltank | 24 | Scrappy | Lum Berry | Rollout, Attract, Stomp, Milk Drink |
 
 ### Whitney (trainer 714)
 
@@ -609,11 +610,11 @@ Uses in battle: Full Restore, Full Restore
 
 | Pokémon | Level | Ability | Held item | Moves |
 |---|---|---|---|---|
-| Ariados | 53 | Swarm | – | Toxic Spikes, Poison Jab, Sticky Web, Megahorn |
-| Forretress | 54 | Sturdy | – | Spikes, Gyro Ball, Toxic, Explosion |
-| Venomoth | 54 | Tinted Lens | – | Bug Buzz, Psychic, Sleep Powder, Sludge Bomb |
-| Muk | 55 | Stench | – | Gunk Shot, Fire Punch, Minimize, Toxic |
-| Crobat | 55 | Inner Focus | Sitrus Berry | Brave Bird, Cross Poison, Double Team, Toxic |
+| Ariados | 54 | Swarm | – | Toxic Spikes, Poison Jab, Sticky Web, Megahorn |
+| Forretress | 55 | Sturdy | – | Spikes, Gyro Ball, Toxic, Explosion |
+| Venomoth | 55 | Tinted Lens | – | Bug Buzz, Psychic, Sleep Powder, Sludge Bomb |
+| Muk | 56 | Stench | – | Gunk Shot, Fire Punch, Minimize, Toxic |
+| Crobat | 56 | Inner Focus | Sitrus Berry | Brave Bird, Cross Poison, Double Team, Toxic |
 
 ### Koga (trainer 703)
 
@@ -640,11 +641,11 @@ Uses in battle: Full Restore, Full Restore
 
 | Pokémon | Level | Ability | Held item | Moves |
 |---|---|---|---|---|
-| Hitmontop | 53 | Intimidate | – | Close Combat, Sucker Punch, Earthquake, Stone Edge |
-| Hitmonlee | 53 | Reckless | – | High Jump Kick, Stone Edge, Sucker Punch, Blaze Kick |
-| Hitmonchan | 54 | Iron Fist | – | Thunder Punch, Ice Punch, Fire Punch, Mach Punch |
-| Steelix | 54 | Sturdy | – | Earthquake, Iron Head, Crunch, Stone Edge |
-| Machamp | 55 | No Guard | Sitrus Berry | Dynamic Punch, Stone Edge, Earthquake, Bullet Punch |
+| Hitmontop | 55 | Intimidate | – | Close Combat, Sucker Punch, Earthquake, Stone Edge |
+| Hitmonlee | 55 | Reckless | – | High Jump Kick, Stone Edge, Sucker Punch, Blaze Kick |
+| Hitmonchan | 56 | Iron Fist | – | Thunder Punch, Ice Punch, Fire Punch, Mach Punch |
+| Steelix | 56 | Sturdy | – | Earthquake, Iron Head, Crunch, Stone Edge |
+| Machamp | 57 | No Guard | Sitrus Berry | Dynamic Punch, Stone Edge, Earthquake, Bullet Punch |
 
 ### Bruno (trainer 704)
 
@@ -671,11 +672,11 @@ Uses in battle: Full Restore, Full Restore
 
 | Pokémon | Level | Ability | Held item | Moves |
 |---|---|---|---|---|
-| Umbreon | 53 | Synchronize | Leftovers | Foul Play, Toxic, Moonlight, Confuse Ray |
-| Vileplume | 53 | Chlorophyll | – | Sleep Powder, Giga Drain, Moonblast, Sludge Bomb |
-| Gengar | 54 | Cursed Body | – | Shadow Ball, Dark Pulse, Thunderbolt, Destiny Bond |
-| Honchkrow | 55 | Super Luck | – | Brave Bird, Sucker Punch, Roost, Thunder Wave |
-| Houndoom | 55 | Flash Fire | Sitrus Berry | Dark Pulse, Flamethrower, Nasty Plot, Solar Beam |
+| Umbreon | 56 | Synchronize | Leftovers | Foul Play, Toxic, Moonlight, Confuse Ray |
+| Vileplume | 56 | Chlorophyll | – | Sleep Powder, Giga Drain, Moonblast, Sludge Bomb |
+| Gengar | 57 | Cursed Body | – | Shadow Ball, Dark Pulse, Thunderbolt, Destiny Bond |
+| Honchkrow | 58 | Super Luck | – | Brave Bird, Sucker Punch, Roost, Thunder Wave |
+| Houndoom | 58 | Flash Fire | Sitrus Berry | Dark Pulse, Flamethrower, Nasty Plot, Solar Beam |
 
 ### Karen (trainer 705)
 

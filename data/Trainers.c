@@ -1262,7 +1262,16 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 100,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 20,
+                .level = 22,
+                .species = SPECIES_JIGGLYPUFF,
+                .item = ITEM_NONE,
+                .moves = { MOVE_SING, MOVE_DEFENSE_CURL, MOVE_ROLLOUT, MOVE_DRAINING_KISS },
+                .ballSeal = 0,
+            },
+            {
+                .ivs = 100,
+                .abilitySlot = TRAINER_POKEMON_ABILITY_1,
+                .level = 22,
                 .species = SPECIES_CLEFAIRY,
                 .item = ITEM_NONE,
                 .moves = { MOVE_METRONOME, MOVE_DISARMING_VOICE, MOVE_ATTRACT, MOVE_ENCORE },
@@ -1271,7 +1280,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 100,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 20,
+                .level = 22,
                 .species = SPECIES_TEDDIURSA,
                 .item = ITEM_NONE,
                 .moves = { MOVE_BABY_DOLL_EYES, MOVE_LICK, MOVE_ATTRACT, MOVE_METAL_CLAW },
@@ -1280,7 +1289,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 100,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 22,
+                .level = 24,
                 .species = SPECIES_MILTANK,
                 .item = ITEM_LUM_BERRY,
                 .moves = { MOVE_ROLLOUT, MOVE_ATTRACT, MOVE_STOMP, MOVE_MILK_DRINK },
@@ -9739,7 +9748,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 53,
+                .level = 56,
                 .species = SPECIES_UMBREON,
                 .item = ITEM_LEFTOVERS,
                 .moves = { MOVE_FOUL_PLAY, MOVE_TOXIC, MOVE_MOONLIGHT, MOVE_CONFUSE_RAY },
@@ -9748,7 +9757,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 53,
+                .level = 56,
                 .species = SPECIES_VILEPLUME,
                 .item = ITEM_NONE,
                 .moves = { MOVE_SLEEP_POWDER, MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_SLUDGE_BOMB },
@@ -9757,7 +9766,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 54,
+                .level = 57,
                 .species = SPECIES_GENGAR,
                 .item = ITEM_NONE,
                 .moves = { MOVE_SHADOW_BALL, MOVE_DARK_PULSE, MOVE_THUNDERBOLT, MOVE_DESTINY_BOND },
@@ -9766,7 +9775,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 55,
+                .level = 58,
                 .species = SPECIES_HONCHKROW,
                 .item = ITEM_NONE,
                 .moves = { MOVE_BRAVE_BIRD, MOVE_SUCKER_PUNCH, MOVE_ROOST, MOVE_THUNDER_WAVE },
@@ -9775,7 +9784,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 55,
+                .level = 58,
                 .species = SPECIES_HOUNDOOM,
                 .item = ITEM_SITRUS_BERRY,
                 .moves = { MOVE_DARK_PULSE, MOVE_FLAMETHROWER, MOVE_NASTY_PLOT, MOVE_SOLAR_BEAM },
@@ -9811,7 +9820,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 53,
+                .level = 54,
                 .species = SPECIES_ARIADOS,
                 .item = ITEM_NONE,
                 .moves = { MOVE_TOXIC_SPIKES, MOVE_POISON_JAB, MOVE_STICKY_WEB, MOVE_MEGAHORN },
@@ -9820,7 +9829,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 54,
+                .level = 55,
                 .species = SPECIES_FORRETRESS,
                 .item = ITEM_NONE,
                 .moves = { MOVE_SPIKES, MOVE_GYRO_BALL, MOVE_TOXIC, MOVE_EXPLOSION },
@@ -9829,7 +9838,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 54,
+                .level = 55,
                 .species = SPECIES_VENOMOTH,
                 .item = ITEM_NONE,
                 .moves = { MOVE_BUG_BUZZ, MOVE_PSYCHIC, MOVE_SLEEP_POWDER, MOVE_SLUDGE_BOMB },
@@ -9838,7 +9847,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 55,
+                .level = 56,
                 .species = SPECIES_MUK,
                 .item = ITEM_NONE,
                 .moves = { MOVE_GUNK_SHOT, MOVE_FIRE_PUNCH, MOVE_MINIMIZE, MOVE_TOXIC },
@@ -9847,7 +9856,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 55,
+                .level = 56,
                 .species = SPECIES_CROBAT,
                 .item = ITEM_SITRUS_BERRY,
                 .moves = { MOVE_BRAVE_BIRD, MOVE_CROSS_POISON, MOVE_DOUBLE_TEAM, MOVE_TOXIC },
@@ -17393,7 +17402,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_1,
-                .level = 53,
+                .level = 55,
                 .species = SPECIES_HITMONTOP,
                 .item = ITEM_NONE,
                 .moves = { MOVE_CLOSE_COMBAT, MOVE_SUCKER_PUNCH, MOVE_EARTHQUAKE, MOVE_STONE_EDGE },
@@ -17402,7 +17411,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 53,
+                .level = 55,
                 .species = SPECIES_HITMONLEE,
                 .item = ITEM_NONE,
                 .moves = { MOVE_HIGH_JUMP_KICK, MOVE_STONE_EDGE, MOVE_SUCKER_PUNCH, MOVE_BLAZE_KICK },
@@ -17411,7 +17420,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 54,
+                .level = 56,
                 .species = SPECIES_HITMONCHAN,
                 .item = ITEM_NONE,
                 .moves = { MOVE_THUNDER_PUNCH, MOVE_ICE_PUNCH, MOVE_FIRE_PUNCH, MOVE_MACH_PUNCH },
@@ -17420,7 +17429,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 54,
+                .level = 56,
                 .species = SPECIES_STEELIX,
                 .item = ITEM_NONE,
                 .moves = { MOVE_EARTHQUAKE, MOVE_IRON_HEAD, MOVE_CRUNCH, MOVE_STONE_EDGE },
@@ -17429,7 +17438,7 @@ const TrainerData sTrainerData[] = {
             {
                 .ivs = 250,
                 .abilitySlot = TRAINER_POKEMON_ABILITY_2,
-                .level = 55,
+                .level = 57,
                 .species = SPECIES_MACHAMP,
                 .item = ITEM_SITRUS_BERRY,
                 .moves = { MOVE_DYNAMIC_PUNCH, MOVE_STONE_EDGE, MOVE_EARTHQUAKE, MOVE_BULLET_PUNCH },

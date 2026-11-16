@@ -1041,7 +1041,7 @@ u32 LONG_CALL CheckIfMonsAreEqual(struct PartyPokemon *pokemon1, struct PartyPok
  *  @return TRUE if can use item, FALSE otherwise
  */
 // Encore: the strongest Pokémon of each Gym Leader, in badge order (Johto then Kanto), for the Infinite Candy's cap
-static const u8 sGymAceLevels[16] = { 15, 21, 22, 29, 35, 40, 43, 50, 61, 62, 63, 65, 64, 66, 68, 70 };
+static const u8 sGymAceLevels[16] = { 15, 21, 24, 29, 35, 40, 43, 50, 61, 62, 63, 65, 64, 66, 68, 70 };
 #define LEAGUE_ACE_LEVEL 60
 
 /**
