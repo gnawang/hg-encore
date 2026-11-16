@@ -54,7 +54,7 @@ The rest of this file lists changes from hg-engine. These come with hg-engine an
 | `SHINY_ODDS` | 32 (1 in 2048) | Matches HeartGold Generations |
 | `DELETABLE_HMS` | On | HMs can be forgotten |
 | `FAST_TEXT_PRINTING`, `ALWAYS_HAVE_NATIONAL_DEX` | On | QoL; National Dex from the start |
-| `ALWAYS_UNCAPPED_FRAME_RATE` | On | The whole game runs at 60 fps, including walking, which makes it about twice as fast. Upstream calls this the traditional 60 fps hack and warns it has bugs, so watch for animation or timing problems in playtesting. `BATTLES_UNCAPPED_FRAME_RATE` stays off: it would take precedence and limit 60 fps to battles |
+| `ALWAYS_UNCAPPED_FRAME_RATE` | On | The whole game runs at 60 fps, including walking, which makes it about twice as fast. Upstream calls this the traditional 60 fps hack and warns it has bugs, so watch for animation or timing problems in playtesting. `BATTLES_UNCAPPED_FRAME_RATE` stays off: it would take precedence and limit 60 fps to battles. Tested in the emulator with no problems found: the opening, Mom's and Lyra's scenes, walking (8 frames per tile), the Bike, a wild battle, menus, the bag, a mart, map transitions, and saving and continuing. Not yet tested: running and trainer battles |
 | Transparent text boxes, level cap, wild double battles | Off (upstream default) | Not wanted, or unstable |
 | `BUILD_DUMPED_EVENTDATA` | On | Map objects Encore changes come from `data/eventdata/zone_event/`. Only maps in that folder replace the ROM's |
 | `ALLOW_SAVE_CHANGES` | On (upstream default) | Required for the expanded Pokédex. Saves aren't PKHeX-compatible. The armips side uses `.ifdef`, so its `0` value still means on |
@@ -227,6 +227,14 @@ Tri Attack, Blaze Kick, Body Slam) and Celadon 3F the stronger ones (Agility, Sp
 Leaf Blade, Body Press, Megahorn, Power Whip). hg-engine's other 78 TRs teach moves already on a TM, an HM or a tutor, or Ally Switch, which isn't implemented, so they aren't sold.
 The full lists are on the [shops page](reference/items.md).
 
+- **Move names when buying.** Item names stay "TM024" (a longer name would break the name length limit), but the purchase dialogue names the move:
+  "TM024 Thunderbolt?" instead of "TM024? Certainly." Other items read as before. `src/field/mart_tm_names.c` replaces overlay 31's
+  `ov31_0225E4BC`, which buffers the item being bought for the mart's bottom screen; it also buffers the move name, a space and " Certainly."
+  (message 50, only for items that aren't TMs) into unused message slots 5–7. Message 12 of `data/text/435.txt` uses them. " Certainly." is left
+  out for TMs because the longest names, such as "TM136 ElectricTerrain" (hg-engine's move names are capped at 16 characters), wouldn't fit.
+  Tested in the emulator with TM070 Flash, TM136 Electric Terrain and Bloom Mail.
+- Six newer TMs Encore sells had descriptions longer than three lines, which the mart's description box shows as blank: Ice Spinner, Pollen Puff,
+  Electric Terrain, Lash Out, Expanding Force and Psychic Noise. They're shortened to three lines in `data/text/850.txt`.
 - TMs are reusable (`REUSABLE_TMS`); TRs are used up, as in Sword and Shield.
 - The TM pocket holds 200 kinds of item instead of 101 (`NUM_BAG_TMS_HMS` in `include/constants/item.h`), so all 193 can be carried. This changes the save layout,
   so saves from before this change don't load correctly. Tested in the emulator: a game with 96 TMs saved, reset and continued with the pocket intact.
@@ -239,7 +247,7 @@ and can't be tossed or sold.
 
 | Item | ID | How it works |
 |---|---|---|
-| Infinite Candy | 2685 (`ITEM_INFINITE_CANDY`) | Same item data as Rare Candy (HeartGold Generations' setup). Use it on a Pokémon from the bag; it's never used up and can be reused in a row. Works for level-100 evolutions like Rare Candy. It can't raise a Pokémon past the ace level of the next Gym: the lowest-level Gym whose badge you don't have, Johto's first (15, 21, 22, 29, 35, 40, 43, 50), then Lance (60) until the first Kanto badge, then Kanto's (61–70). With all 16 badges there's no cap. Battles and Rare Candies aren't capped (`GetInfiniteCandyCap` in `src/pokemon.c`; update `sGymAceLevels` if Gym teams change) |
+| Infinite Candy | 2685 (`ITEM_INFINITE_CANDY`) | Same item data as Rare Candy (HeartGold Generations' setup). Use it on a Pokémon from the bag; it's never used up and can be reused in a row. Works for level-100 evolutions like Rare Candy. It can't raise a Pokémon past the ace level of the next Gym: the lowest-level Gym whose badge you don't have, Johto's first (15, 21, 22, 29, 35, 40, 43, 50), then Lance (60) until the first Kanto badge, then Kanto's (61–70). With all 16 badges there's no cap, and a level-100 Pokémon can still evolve with it. Battles and Rare Candies aren't capped (`GetInfiniteCandyCap` in `src/pokemon.c`; update `sGymAceLevels` if Gym teams change). At the cap, choosing the Pokémon does nothing, as with a Rare Candy at level 100; there's no "won't have any effect" message. Tested in the emulator: caps of 15, 21, 60, 62 and none, with repeated use stopping at the cap |
 | Pocket Center | 2686 (`ITEM_POCKET_PKMN_CENTER`) | Use it from the bag, or register it to the Y button. Either way it runs common script 2074, which plays the heal jingle, heals the whole party (`heal_party`, the Pokémon Center command) and prints a message. Outside battle only |
 
 Files involved:

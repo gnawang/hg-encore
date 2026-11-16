@@ -664,3 +664,6 @@ arm9 EncounterSlot_WildMonSlotRoll_Headbutt 022477C0 0
 0012 PlayerTrainerVictoryBGM_hook 0224DA9E 3
 
 arm9 FieldSystem_RestoreMapObjectsFromSave 0203B9F4 1
+
+# Encore: Poke Mart TM move names (src/field/mart_tm_names.c)
+0031 Mart_BufferPurchaseItemName 0225E4BC

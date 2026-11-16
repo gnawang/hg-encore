@@ -1075,8 +1075,12 @@ BOOL LONG_CALL CanUseItemOnMonInParty(struct Party *party, u16 itemID, s32 party
 {
     struct PartyPokemon *mon = Party_GetMonByIndex(party, partyIdx);
 
-    if (itemID == ITEM_INFINITE_CANDY && GetMonData(mon, MON_DATA_LEVEL, NULL) >= GetInfiniteCandyCap()) {
-        return FALSE;
+    if (itemID == ITEM_INFINITE_CANDY) {
+        // with no cap (all 16 badges), fall through so a level-100 Pokémon can still evolve with it, as with a Rare Candy
+        u32 cap = GetInfiniteCandyCap();
+        if (cap < 100 && GetMonData(mon, MON_DATA_LEVEL, NULL) >= cap) {
+            return FALSE;
+        }
     }
 
     if (GetItemData(itemID, ITEM_PARAM_LEVEL_UP, heapID) && GetMonData(mon, MON_DATA_LEVEL, NULL) == 100 && GetMonEvolution(party, mon, EVOCTX_LEVELUP, itemID, NULL)) {

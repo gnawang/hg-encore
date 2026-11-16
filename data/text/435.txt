@@ -10,7 +10,7 @@ Do you need anything else?\nAnything at all? {YESNO 0}
 Do you need anything else?\nHee hee! {YESNO 0}
 Do you want anything else? {YESNO 0}
 You don’t have enough money.
-{STRVAR_1 8, 0, 0}? Certainly.\nHow many would you like?
+{STRVAR_1 8, 0, 0}{STRVAR_1 6, 7, 0}{STRVAR_1 6, 6, 0}?{STRVAR_1 6, 5, 0}\nHow many would you like?
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 OK, {STRVAR_1 51, 0, 0}. That’ll be\n${STRVAR_1 55, 1, 0}.
 Here you are.\nThanks for shopping with us.
@@ -48,3 +48,4 @@ Would you like\n{STRVAR_1 8, 0, 0}?
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 You don’t have enough points!
 All right, here you go.\nCome back anytime! {WAIT 1}
+ Certainly.

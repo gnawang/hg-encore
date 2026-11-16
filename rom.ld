@@ -824,6 +824,9 @@ PrintItemSlotQuantity = 0x021FF66C | 1;
 
 PlayerProfile_TestBadgeFlag = 0x02028F98 | 1;
 InitMartUI = 0x02256D34 | 1;
+/* Encore: used by Mart_BufferPurchaseItemName (src/field/mart_tm_names.c); addresses from the calls in overlay 31's ov31_0225E4BC */
+BufferItemName = 0x0200C0CC | 1;
+BufferDecorationName = 0x0200C408 | 1;
 
 sBattleBgProfileTable = 0x0226E70C;
 

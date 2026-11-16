@@ -29,6 +29,8 @@ and the work still planned.
 Follow the README, then run `make`, which writes `test.nds`. Problems seen on macOS on Apple Silicon:
 
 - `base/` keeps files from earlier builds. If a build shows changes that aren't in the repo, such as a reverted map edit, restore that file from `rom.nds`.
+  This includes hooks: removing or moving a line in `hooks` leaves its stub in `base/overlay/` and `base_dsrom/arm9_overlays/`, jumping to code that
+  no longer exists. Extract a clean copy with `tools/dsrom extract -r rom.nds -o <dir>` and copy the overlay over both.
 - Clone with `--recursive`, or run `git submodule update --init`, or `make` stops at `tools/nitrogfx`.
 - Make paths with spaces can fail. Build through a symlink to the repo from a path without spaces.
 - A `pyexpat` symbol error from `pip` or `venv` means Homebrew's Python doesn't match the macOS libexpat.
@@ -54,7 +56,7 @@ they contain game data. Run it from the repo root with `.venv/bin/python scripts
 
 | Command | What it does |
 |---|---|
-| `new-game OUT` | Plays from power-on to the overworld in Elm's Lab with Totodile, Mom's items in the bag. Takes about a minute. Check `OUT_mom.png`, `OUT_lab.png` and `OUT_starter.png` if it fails |
+| `new-game OUT` | Plays from power-on to the overworld in Elm's Lab with Totodile, Mom's items in the bag. Takes about two minutes. It has a route for 30 fps and one for 60 fps, picked from `ALWAYS_UNCAPPED_FRAME_RATE`. Check `OUT_mom.png`, `OUT_lab.png` and `OUT_starter.png` if it fails |
 | `team IN OUT --mon SPECIES:LEVEL[:ITEM[:MOVE+MOVE]]` | Replaces the party, with correct EXP, ability and HP for the species. Leave the item empty with `::` to give moves only |
 | `bag IN OUT --add ITEM:QTY[:POCKET]` | Adds items. Pockets: items (default), key, tms, mail, medicine, berries, balls, battle. The game doesn't check pockets for you, so use the item's real one (`fieldPocket` in `data/itemdata/itemdata.c`). Ability Capsules, Ability Patches and Mints are in medicine |
 | `damage IN OUT SLOT HP [--status 8]` | Sets HP and status (8 is poison) |

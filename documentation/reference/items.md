@@ -66,7 +66,7 @@ Every Poké Mart has two clerks: one sells the shared list below, which grows wi
 | TM211 Electroweb | ₽2,000 | The user traps the foe in an electric net. It also lowers the foe’s Speed. |
 | TM194 Grassy Glide | ₽2,000 | Gliding on the ground, the user attacks the target. This move always goes first on Grassy Terrain. |
 | TM122 Encore | ₽2,000 | The user compels the foe to keep using only the move it last used for three to seven turns. |
-| TM136 ElectricTerrain | ₽2,000 | The user turns the ground into Electric Terrain for five turns, powering up Electric-type moves.\rPokémon on the ground can no longer fall asleep. |
+| TM136 ElectricTerrain | ₽2,000 | The user electrifies the ground for five turns, boosting Electric moves. Grounded Pokémon can’t fall asleep. |
 | TM137 Grassy Terrain | ₽2,000 | The user turns the ground into Grassy Terrain for five turns. This powers up Grass-type moves. |
 | TM139 Misty Terrain | ₽2,000 | This protects Pokémon on the ground from status conditions and halves damage from Dragon-type moves for five turns. |
 | TM138 Psychic Terrain | ₽2,000 | This protects Pokémon on the ground from priority moves and powers up Psychic-type moves for five turns. |
@@ -186,9 +186,9 @@ Every Poké Mart has two clerks: one sells the shared list below, which grows wi
 | TM222 Breaking Swipe | ₽2,000 | The user swings its tough tail and attacks opposing Pokémon. This also lowers their Attack stats. |
 | TM219 Skitter Smack | ₽3,000 | The user skitters behind the target to attack. This also lowers the target’s Sp. Atk stat. |
 | TM215 Scorching Sands | ₽3,000 | The user throws scorching sand at the target to attack. The target may also be left with a burn. |
-| TM228 Psychic Noise | ₽3,000 | The user attacks the target with unpleasant sound waves. For two turns, the target is prevented from\rrecovering HP through moves, Abilities, or held items. |
+| TM228 Psychic Noise | ₽3,000 | The user attacks with unpleasant sound waves. For two turns, the target can’t recover HP by any means. |
 | TM207 Temper Flare | ₽3,000 | Spurred by desperation, the user attacks the target. This move’s power is doubled if the user’s previous move failed. |
-| TM199 Lash Out | ₽3,000 | The user lashes out to vent its frustration toward the target. This move’s power is doubled if the\ruser’s stats were lowered during this turn. |
+| TM199 Lash Out | ₽3,000 | The user lashes out to vent its frustration. Its power doubles if the user’s stats were lowered this turn. |
 | TM00 Mega Punch | ₽3,000 | The target is slugged by a punch thrown with muscle-packed power. |
 | TM134 Reversal | ₽3,000 | An all-out attack that becomes more powerful the less HP the user has. |
 | TM121 Heavy Slam | ₽3,000 | The user slams into the target. The greater the weight difference, the greater the damage. |
@@ -234,7 +234,7 @@ Every Poké Mart has two clerks: one sells the shared list below, which grows wi
 | TM187 Icicle Spear | ₽3,000 | The user launches sharp icicles at the foe. It strikes two to five times in a row. |
 | TM200 Scale Shot | ₽3,000 | The user attacks by shooting scales two to five times in a row. This raises Speed but lowers Defense. |
 | TM185 Lunge | ₽3,000 | The user makes a lunge at the target, attacking with full force. This also lowers the target’s Attack stat. |
-| TM124 Ice Spinner | ₽3,000 | The user covers its feet in thin ice and twirls around, slamming into the target.\rThis move’s spinning motion also destroys the terrain. |
+| TM124 Ice Spinner | ₽3,000 | The user twirls on icy feet and slams into the target. The spinning motion also destroys any terrain. |
 | TM221 Throat Chop | ₽3,000 | The user attacks the target’s throat, preventing the target from using sound-based moves for two turns. |
 
 ## Olivine City Poké Mart
@@ -252,8 +252,8 @@ Every Poké Mart has two clerks: one sells the shared list below, which grows wi
 | TM101 Power Gem | ₽3,000 | The user attacks with a ray of light that sparkles as if it were made of gemstones. |
 | TM106 Drill Run | ₽3,000 | The user rotates its body like a drill. It has a high critical-hit ratio. |
 | TM110 Liquidation | ₽3,000 | The user slams into the target using a full-force blast of water. This may also lower the target’s Defense stat. |
-| TM218 Expanding Force | ₽3,000 | The user attacks the target with its psychic power.\rWhen the ground is Psychic Terrain, this move’s power is boosted and it damages all opposing Pokémon. |
-| TM131 Pollen Puff | ₽3,000 | The user attacks the enemy with a pollen puff that explodes.\rIf the target is an ally, it gives the ally a pollen puff that restores its HP instead. |
+| TM218 Expanding Force | ₽3,000 | The user attacks with psychic power. On Psychic Terrain, its power rises and it hits all opposing Pokémon. |
+| TM131 Pollen Puff | ₽3,000 | The user attacks with an exploding pollen puff. If the target is an ally, the puff restores its HP instead. |
 
 ## Cianwood City Pharmacy
 

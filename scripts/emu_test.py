@@ -61,6 +61,18 @@ NEW_GAME_ROUTE = [
                 "w90 a%20 w20 b%3 a%25 w20 a%25 w20"),                                      # nickname, end of the scene
 ]
 
+# the same at 60 fps (ALWAYS_UNCAPPED_FRAME_RATE), where walking takes 8 frames per tile and Lyra meets you at the door
+NEW_GAME_ROUTE_60FPS = [
+    ("mom", NEW_GAME_ROUTE[0][1].split("left:50")[0] +
+            "left:25 w10 up:10 w10 left:10 w80 right:10 w8 up:10 w8 left:20 w70 "   # bedroom stairs
+            "w120 a%10 a%10 a%10 a%10 a%10 w30 a%6 w130 a%10 w200 a%10 w300 b%5 w60 a%5 w60"),  # Mom's scene and gift
+    ("lab", "down:60 w120 down:10 w20 left:40 w20 left:40 w80 a%25 a%25 a%25 w60 "     # Lyra
+            "left:30 w20 left:56 w10 up:40 w120"),                                    # across town, into the lab
+    ("starter", "up:30 w30 a%30 w10 a%30 w10 a%30 w10 right:25 w8 up:10 w8 a w60 a%3 w30 "  # Elm
+                "right:9 w8 up:9 w8 a w90 w30 t:75:35 w100 a w60 a%4 w40 "                  # first ball, Totodile
+                "w90 a%20 w20 b%3 a%25 w20 a%25 w20"),                                      # nickname, end of the scene
+]
+
 
 def state_path(name):
     return os.path.join(STATE_DIR, name + ".ds")
@@ -363,9 +375,16 @@ def command_step(args):
     print(picture_path(args.out))
 
 
+def uncapped_frame_rate():
+    # ALWAYS_UNCAPPED_FRAME_RATE runs the overworld every frame instead of every other one
+    with open("armips/include/config.s", encoding="utf-8") as config:
+        return re.search(r"^ALWAYS_UNCAPPED_FRAME_RATE\s+equ\s+1\b", config.read(), re.M) is not None
+
+
 def command_new_game(args):
     emu = open_emulator(args.rom)
-    for name, inputs in NEW_GAME_ROUTE:
+    route = NEW_GAME_ROUTE_60FPS if uncapped_frame_rate() else NEW_GAME_ROUTE
+    for name, inputs in route:
         run_inputs(emu, inputs.split(), args.out + "_" + name)
     constants = read_constants()
     print_party(emu, constants)

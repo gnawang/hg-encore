@@ -353,19 +353,19 @@ The foe is hit by a strong\ntelekinetic force. It may also\nreduce the foe’s S
 The user slams into the target. The\ngreater the weight difference, the\ngreater the damage.
 The user compels the foe to keep\nusing only the move it last used for\nthree to seven turns.
 It swamps the entire battlefield\nwith a giant wave. It can also be\nused for crossing water.
-The user covers its feet in\nthin ice and twirls around,\nslamming into the target.\rThis move’s spinning motion\nalso destroys the terrain.
+The user twirls on icy feet and slams\ninto the target. The spinning motion\nalso destroys any terrain.
 The foe is scorched with an intense\nblast of fire. The target may also\nbe left with a burn.
 A strong electric blast is loosed at\nthe foe. It may also leave the foe\nparalyzed.
 The user attacks by playing rough\nwith the target. This may also lower\nthe target’s Attack stat.
 The user temporarily empties\nits mind to forget its concerns.\nIt sharply raises the user’s Sp. Def stat.
 The user quietly focuses its mind\nand calms its spirit to raise its\nSp. Atk and Sp. Def stats.
 A move that boosts the power of the\nally’s attack in a Double Battle.
-The user attacks the enemy\nwith a pollen puff that\nexplodes.\rIf the target is an ally,\nit gives the ally a pollen puff\nthat restores its HP instead.
+The user attacks with an exploding\npollen puff. If the target is an ally,\nthe puff restores its HP instead.
 The user switches places with a\nparty Pokémon in waiting, passing\nalong any stat changes.
 The user makes the ground under the\nfoe erupt with power. It may also\nlower the target’s Sp. Def.
 An all-out attack that becomes more\npowerful the less HP the user has.
 The foe is struck with an icy-cold\nbeam of energy. It may also freeze\nthe target solid.
-The user turns the ground into\nElectric Terrain for five turns,\npowering up Electric-type moves.\rPokémon on the ground can no longer\nfall asleep.
+The user electrifies the ground for\nfive turns, boosting Electric moves.\nGrounded Pokémon can’t fall asleep.
 The user turns the ground into\nGrassy Terrain for five turns.\nThis powers up Grass-type moves.
 This protects Pokémon on the ground\nfrom priority moves and powers up\nPsychic-type moves for five turns.
 This protects Pokémon on the ground from\nstatus conditions and halves damage from\nDragon-type moves for five turns.
@@ -428,7 +428,7 @@ The user attacks with energy from\njealousy. This leaves all opposing\nPokémon 
 After making its attack, the user\nrushes back to switch places with a\nparty Pokémon in waiting.
 The user slams the target with its\nwings to inflict damage. The target\nis hit twice in a row.
 The user attacks by controlling the\ntarget’s item. This move fails if\nthe foe isn’t holding an item.
-The user lashes out to vent its\nfrustration toward the target. This\nmove’s power is doubled if the\ruser’s stats were lowered during\nthis turn.
+The user lashes out to vent its\nfrustration. Its power doubles if the\nuser’s stats were lowered this turn.
 The user attacks by shooting scales\ntwo to five times in a row. This\nraises Speed but lowers Defense.
 The user attacks everything around it and\nfaints upon using this move. This move’s\npower is boosted on Misty Terrain.
 The user adds its HP to the foe’s\nHP, then equally shares the combined\nHP with the foe.
@@ -447,7 +447,7 @@ The area around the user is swamped by\na giant sludge wave.\nIt may also poison
 The user throws scorching sand at\nthe target to attack.\nThe target may also be left with a burn.
 The user covers the foe with a mass\nof down that sharply lowers the\nAttack stat.
 Two turns after this move is used,\nthe foe is attacked with a hunk of\npsychic energy.
-The user attacks\nthe target with\nits psychic power.\rWhen the ground is Psychic Terrain,\nthis move’s power is boosted and it\ndamages all opposing Pokémon.
+The user attacks with psychic power.\nOn Psychic Terrain, its power rises and\nit hits all opposing Pokémon.
 The user skitters behind the target\nto attack. This also lowers the\ntarget’s Sp. Atk stat.
 The user gathers energy from space\nto raise its Sp. Atk on the first\nturn, then attacks on the next.
 The user attacks the target’s throat,\npreventing the target from using\nsound-based moves for two turns.
@@ -457,7 +457,7 @@ A move that works differently for\nthe Ghost type than for all the\nother types.
 The target is crushed with an arm, a claw,\nor the like to inflict damage. The attack is\nmore powerful the more HP the foe has left.
 The user raises its allies’ morale\nwith a draconic cry so that their\nfuture attacks have a heightened\rchance of landing critical hits.\nThis rouses Dragon types more.
 The user attacks the target using its angelic\nvoice. This also confuses the target if its\nstats have been boosted during the turn.
-The user attacks the target with\nunpleasant sound waves. For two\nturns, the target is prevented from\rrecovering HP through moves,\nAbilities, or held items.
+The user attacks with unpleasant sound\nwaves. For two turns, the target can’t\nrecover HP by any means.
 The user reacts to the target’s\nmovement and strikes with the heel\nof its palm, making the target flinch.\rThis move fails if the target is not\nreadying a priority move.
 - - -
 - - -
