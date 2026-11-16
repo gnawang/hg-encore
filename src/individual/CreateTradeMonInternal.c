@@ -11,7 +11,21 @@ void __attribute__((section(".init"))) CreateTradeMon_Internal(struct PartyPokem
     u32 mapsec;
     int heapId_2;
 
-    PokeParaSet(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
+    // Encore: the trade Pokemon carries the player's visible Trainer ID in the low half of its OT ID. The Name Rater
+    // (ScrCmd_PartyMonIsMine) compares only that half, so it can rename the Pokemon. Battles compare the full ID, OT name
+    // and OT gender, so it still counts as traded: boosted EXP and the badge obedience check. The secret half is chosen so
+    // the Pokemon can't become shiny, as in vanilla. Kenya and Shuckie keep their vanilla ID, because the mail delivery and
+    // Kirk's request to return Shuckie look for it.
+    u32 otId = (u32)trade_dat->otId;
+    if (tradeno != NPC_TRADE_KENYA_SPEAROW && tradeno != NPC_TRADE_SHUCKIE_SHUCKLE)
+    {
+        u32 visibleId = PlayerProfile_GetTrainerID_VisibleHalf(Sav2_PlayerData_GetProfileAddr(SaveBlock2_get()));
+        u32 pid = (u32)trade_dat->pid;
+        u32 secretId = (visibleId ^ (pid >> 16) ^ (pid & 0xFFFF) ^ 0x8000) & 0xFFFF;
+        otId = (secretId << 16) | visibleId;
+    }
+
+    PokeParaSet(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, otId);
 
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName(heapId_2, tradeno);

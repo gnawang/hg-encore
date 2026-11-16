@@ -403,6 +403,11 @@ In HeartGold the Embedded Tower hides Groudon and only uses the Blue Orb, which 
 - **Kanto boss rush** (`data/scr_seq/scr_seq_0832_T11R0101.s`, `data/text/533.txt`): a new NPC in the Fighting Dojo, available with all eight Kanto Badges, runs the eight Kanto Leaders' rematch teams in a row. The party
   is healed between battles and it can be repeated.
 - **Kurt** (`data/scr_seq/scr_seq_0874_T23R0501.s`) makes the balls immediately instead of the next day. His phone number step still follows the first batch.
+- **In-game trades can be renamed** (`src/individual/CreateTradeMonInternal.c`): the Name Rater refuses a Pokémon whose OT ID doesn't match the player's,
+  but its check (`ScrCmd_PartyMonIsMine` in pokeheartgold) compares only the visible half of the ID. Pokémon from in-game trades, such as Rocky the Onix, now get the player's
+  visible ID with a different secret ID, chosen so they can't be shiny. Battles compare the full ID, OT name and OT gender, so they still count as traded:
+  they get boosted EXP and can disobey without enough badges. Their summary shows the player's ID No. under their vanilla OT name. Kenya and Shuckie keep their
+  vanilla ID, because the mail delivery and Kirk's request to return Shuckie check for it, so they can't be renamed.
 - **Phone calls** (`bytereplacement`): the chance of a random call on each check is 5%, down from 50%. Story calls aren't affected.
 
 ### Pocket Center with no Pokémon (`data/scr_seq/scr_seq_00003_commonscript.s`, `data/text/040.txt`)
