@@ -54,7 +54,8 @@ The rest of this file lists changes from hg-engine. These come with hg-engine an
 | `SHINY_ODDS` | 32 (1 in 2048) | Matches HeartGold Generations |
 | `DELETABLE_HMS` | On | HMs can be forgotten |
 | `FAST_TEXT_PRINTING`, `ALWAYS_HAVE_NATIONAL_DEX` | On | QoL; National Dex from the start |
-| Transparent text boxes, level cap, 60 fps, wild double battles | Off (upstream default) | Not wanted, or unstable |
+| `ALWAYS_UNCAPPED_FRAME_RATE` | On | The whole game runs at 60 fps, including walking, which makes it about twice as fast. Upstream calls this the traditional 60 fps hack and warns it has bugs, so watch for animation or timing problems in playtesting. `BATTLES_UNCAPPED_FRAME_RATE` stays off: it would take precedence and limit 60 fps to battles |
+| Transparent text boxes, level cap, wild double battles | Off (upstream default) | Not wanted, or unstable |
 | `BUILD_DUMPED_EVENTDATA` | On | Map objects Encore changes come from `data/eventdata/zone_event/`. Only maps in that folder replace the ROM's |
 | `ALLOW_SAVE_CHANGES` | On (upstream default) | Required for the expanded Pokédex. Saves aren't PKHeX-compatible. The armips side uses `.ifdef`, so its `0` value still means on |
 
