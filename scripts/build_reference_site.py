@@ -159,6 +159,26 @@ def read_shops():
     return shops
 
 
+def place_list(text):
+    # "Route 27 (item ball); Bell Tower 5F (hidden, ×2)" -> [["Route 27", "item ball"], ["Bell Tower 5F", "hidden, ×2"]]
+    return [list(re.match(r"(.*?)(?: \(([^()]*)\))?$", part).groups("")) for part in text.split("; ")] if text else []
+
+
+def read_itemdex():
+    parts = re.split(r"\n## (.+)\n", "\n".join(read_lines("itemdex.md")))
+    items = []
+    for name, body in zip(parts[1::2], parts[2::2]):
+        fields = dict(re.findall(r"^- ([^:]+): (.*)$", body, re.M))
+        held = [list(m) for m in re.findall(r"([^,()]+?) \((\d+)%\)", fields.get("Held by wild", ""))]
+        evolves = [list(re.match(r"(.*) → (.*?) \((.*)\)$", e).groups()) for e in fields.get("Evolves", "").split("; ") if e]
+        items.append({"name": name, "pk": fields.get("Pocket", ""), "pr": fields.get("Price", ""), "desc": fields.get("Description", ""),
+                      "mv": fields.get("Teaches", ""), "sold": place_list(fields.get("Sold", "")), "found": place_list(fields.get("Found", "")),
+                      "given": place_list(fields.get("Given", "")), "prize": place_list(fields.get("Prize", "")),
+                      "held": [[n.strip(), int(r)] for n, r in held], "evo": evolves,
+                      "tr": int(re.match(r"\d+", fields["Held by trainers"]).group()) if "Held by trainers" in fields else 0})
+    return items
+
+
 def read_events():
     # gift_static.md: each ## or ### section becomes one entry with its notes and tables. The page intro is skipped.
     lines = read_lines("gift_static.md")
@@ -186,15 +206,15 @@ def main():
     output = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_OUTPUT
     data = {"P": read_pokemon(), "E": read_areas("encounters.md", "## "), "S": read_areas("special_encounters.md", "### ", "## "),
             "T": read_trainers("trainers.md"), "O": read_trainers("other_trainers.md"), "M": read_moves(), "A": read_abilities(), "I": read_shops(),
-            "G": read_events()}
+            "G": read_events(), "X": read_itemdex()}
     with open(TEMPLATE, encoding="utf-8") as source:
         page = source.read()
     text = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     os.makedirs(output, exist_ok=True)
     with open(os.path.join(output, "index.html"), "w", encoding="utf-8") as target:
         target.write(page.replace("__DATA__", text))
-    print("Wrote %s with %d Pokémon, %d areas, %d trainer fights, %d moves, %d abilities, %d shops and %d event lists" % (os.path.join(output, "index.html"),
-          len(data["P"]), len(data["E"]) + len(data["S"]), len(data["T"]) + len(data["O"]), len(data["M"]), len(data["A"]), len(data["I"]), len(data["G"])))
+    print("Wrote %s with %d Pokémon, %d areas, %d trainer fights, %d moves, %d abilities, %d items, %d shops and %d event lists" % (os.path.join(output, "index.html"),
+          len(data["P"]), len(data["E"]) + len(data["S"]), len(data["T"]) + len(data["O"]), len(data["M"]), len(data["A"]), len(data["X"]), len(data["I"]), len(data["G"])))
 
 
 if __name__ == "__main__":

@@ -15,6 +15,7 @@ because that information is in the game's event scripts.
 | [moves.md](moves.md) | Every move an Encore Pokémon can learn: type, power, accuracy, PP, where to buy its TM, and who learns it by level-up, TM, tutor or egg |
 | [abilities.md](abilities.md) | Every ability an Encore Pokémon can have: its description, who has it as a normal or hidden ability, battle rules such as Mold Breaker, and caveats |
 | [items.md](items.md) | What every shop sells, with prices, badge requirements and descriptions |
+| [itemdex.md](itemdex.md) | Every item you can buy, find, win or be given, or that wild Pokémon or trainers hold: its pocket, price, description, the move a TM teaches, every place to get it, and the Pokémon it evolves |
 
 New items, prices and game settings are in [ENCORE_CHANGES.md](../ENCORE_CHANGES.md), which also explains
 why each change was made and lists the work still planned.

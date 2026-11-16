@@ -115,6 +115,12 @@ def load_game_names():
                 if int(value) < len(names):
                     GAME_NAMES.setdefault(constant, names[int(value)])
 
+    with open("data/text/222.txt", encoding="utf-8") as source:
+        item_names = source.read().split("\n")
+    for number, constant in item_constants_by_id().items():  # also Encore's custom items, defined from MAX_BASE_ITEM_NUM
+        if number < len(item_names):
+            GAME_NAMES.setdefault(constant, item_names[number])
+
     with open("data/Moves.c", encoding="utf-8") as source:
         GAME_NAMES.update(re.findall(r'\[(MOVE_\w+)\] = \{.*?\.name = "([^"]*)"', source.read(), re.S))
 
@@ -221,11 +227,33 @@ def read_species_ids():
         return {name: int(value) for name, value in re.findall(r"#define (SPECIES_\w+)\s+(\d+)", source.read())}
 
 
+def item_constants_by_id():
+    # {109: "ITEM_DAWN_STONE"}, the first constant for each number, for data that writes an item as a number
+    ids = {}
+    text = read_file("include/constants/item.h")
+    for name, value in re.findall(r"#define (ITEM_\w+)\s+(\d+)\b", text):
+        ids.setdefault(int(value), name)
+    # Encore's custom items follow the last hg-engine item: #define ITEM_INFINITE_CANDY (MAX_BASE_ITEM_NUM + 1)
+    last = {name: number for number, name in ids.items()}["ITEM_CANARI_BREAD"]
+    for name, offset in re.findall(r"#define (ITEM_\w+)\s+\(MAX_BASE_ITEM_NUM \+ (\d+)\)", text):
+        ids[last + int(offset)] = name  # over placeholders such as ITEM_CUSTOM_1
+    return ids
+
+
+def evolution_item(argument):
+    # Evolutions.c names most items, but writes a few as numbers, e.g. 109 for the Dawn Stone
+    return item_constants_by_id().get(int(argument), argument) if argument.isdigit() else argument
+
+
 def evolution_text(method, argument, names):
     template = EVOLUTION_TEXT.get(method)
+    if method == "EVO_HAS_MOVE_TYPE":
+        return "Level up knowing a %s-type move" % pretty(argument.replace("TYPE_", ""))
+    if method == "EVO_OTHER_PARTY_MON":
+        return "Level up with %s in the party" % names.get(argument, pretty(argument))
     if template is None:
         return "%s (%s)" % (pretty(method.replace("EVO_", "")), pretty(argument))
-    return template.format(level=argument, item=pretty(argument), move=pretty(argument))
+    return template.format(level=argument, item=pretty(evolution_item(argument)), move=pretty(argument))
 
 
 def percent_cell(entries):
@@ -538,6 +566,10 @@ def read_item_descriptions():
         with open("data/text/%03d.txt" % bank, encoding="utf-8") as source:
             banks.append((start, ids[last], source.read().split("\n")))
         start = ids[last] + 1
+    # Encore's custom items, after the last bank, have their own (MSG_DATA_ITEM_DESCRIPTION_CUSTOM)
+    with open("data/text/221.txt", encoding="utf-8") as source:
+        banks.append((start, 1 << 16, source.read().split("\n")))
+    ids.update({name: number for number, name in item_constants_by_id().items() if number >= start})
     descriptions = {}
     for item, number in ids.items():
         for first, last, text in banks:
@@ -566,6 +598,128 @@ def build_items():
         for item, badges in items:
             cells = [machine_label(item, machine_moves), "₽{:,}".format(prices[item])] + (["%d" % badges] if badge_column else [])
             lines.append("| %s | %s |" % (" | ".join(cells), descriptions.get(item, "").replace("|", "/")))
+        lines.append("")
+    return lines
+
+
+# Encore's own gifts, which aren't in pret's scripts (scripts/item_locations.json)
+ENCORE_ITEM_GIFTS = {
+    "ITEM_INFINITE_CANDY": [("New Bark Town", "Gift from Mom at the start")],
+    "ITEM_POCKET_PKMN_CENTER": [("New Bark Town", "Gift from Mom at the start")],
+    "ITEM_ENIGMA_STONE": [("Route 30 Apricorn House", "Gift from the Collector, after the Elite Four")],
+    "ITEM_RED_ORB": [("Route 30 Apricorn House", "Gift from the Collector, after the Elite Four")],
+}
+POCKET_NAMES = {"POCKET_ITEMS": "Items", "POCKET_MEDICINE": "Medicine", "POCKET_BALLS": "Poké Balls", "POCKET_TMHMS": "TMs and HMs",
+                "POCKET_BERRIES": "Berries", "POCKET_MAIL": "Mail", "POCKET_BATTLE_ITEMS": "Battle Items", "POCKET_KEY_ITEMS": "Key Items"}
+WILD_HELD_RATES = (("common", 50), ("rare", 5))
+ITEM_EVOLUTIONS = {"EVO_STONE", "EVO_STONE_MALE", "EVO_STONE_FEMALE", "EVO_TRADE_ITEM", "EVO_ITEM_DAY", "EVO_ITEM_NIGHT"}
+
+
+def read_item_pockets():
+    pockets = {}
+    parts = re.split(r"^\[(ITEM_\w+)\] =", read_file("data/itemdata/itemdata.c"), flags=re.M)
+    for item, body in zip(parts[1::2], parts[2::2]):
+        pocket = re.search(r"\.fieldPocket = (POCKET_\w+)", body)
+        if pocket:
+            pockets[item] = pocket.group(1)
+    return pockets
+
+
+def read_wild_held_items(species):
+    # {item: [(species, percent)]} for roster Pokémon
+    held = {}
+    for key, body in split_entries(read_file("data/Species.c"), r"^    \[(SPECIES_\w+)\] = \{"):
+        if key not in species:
+            continue
+        for slot, rate in WILD_HELD_RATES:
+            item = re.search(r"\.%s = (ITEM_\w+)" % slot, block(body, "wildHeldItems"))
+            if item and item.group(1) != "ITEM_NONE":
+                held.setdefault(item.group(1), []).append((key, rate))
+    return held
+
+
+def build_itemdex(species):
+    names = {key: value["name"] for key, value in species.items()}
+    roster = set(roster_keys(species))
+    prices, descriptions, pockets = read_item_prices(), read_item_descriptions(), read_item_pockets()
+    machine_moves = {item: move for move, items in read_machine_items().items() for item in items}
+    by_id = item_constants_by_id()
+
+    sold = {}
+    for shop, items in read_shops():
+        for item, badges in items:
+            sold.setdefault(item, []).append((shop, badges))
+    found = {}
+    with open("scripts/item_locations.json", encoding="utf-8") as source:
+        for number, places in json.load(source).items():
+            if int(number) in by_id:
+                found[by_id[int(number)]] = places
+    for item, places in ENCORE_ITEM_GIFTS.items():
+        found.setdefault(item, []).extend([place, how, 1] for place, how in places)
+    held = {item: [entry for entry in entries if entry[0] in roster] for item, entries in read_wild_held_items(species).items()}
+    evolves = {}
+    for key, entries in read_evolutions().items():
+        if key in roster:
+            for method, argument, target in entries:
+                if method in ITEM_EVOLUTIONS and target in roster:
+                    evolves.setdefault(evolution_item(argument), []).append("%s → %s (%s)" % (names[key], names[target], evolution_text(method, argument, names)))
+
+    # items on trainers' Pokémon, which the trainer pages name, counted per Pokémon
+    trainer_held = {}
+    for item in re.findall(r"\.item = (ITEM_\w+)", read_file("data/Trainers.c")):
+        if item != "ITEM_NONE":
+            trainer_held[item] = trainer_held.get(item, 0) + 1
+    for uses in re.findall(r"\.items = \{([^}]*)\}", read_file("data/Trainers.c")):
+        for item in re.findall(r"ITEM_\w+", uses):
+            if item != "ITEM_NONE":
+                trainer_held.setdefault(item, 0)
+
+    # every TM, TR and HM for a move the Pokémon pages list, so each machine label has a page, even without a known source
+    # (HeartGold's own TM01–TM92 and HMs; the newer TMs and TRs that are sold are already in `sold`)
+    numbers = {name: number for number, name in by_id.items()}
+    machines = {item for entries in read_machine_items().values() for item in entries
+                if numbers["ITEM_TM001"] <= numbers.get(item, 0) <= numbers["ITEM_HM08"]}
+
+    items = set(sold) | set(found) | {item for item, entries in held.items() if entries} | set(evolves) | set(trainer_held) | machines
+    # in bag order: by pocket, then by item number
+    order = {item: number for number, item in by_id.items()}
+    items = sorted((item for item in items if item in pockets),
+                   key=lambda item: (list(POCKET_NAMES).index(pockets[item]) if pockets[item] in POCKET_NAMES else 99, order.get(item, 0)))
+
+    lines = ["# Items", "",
+             "Generated from the item, shop, species and evolution data by `scripts/build_reference_docs.py`, with field items and gifts from "
+             "`scripts/item_locations.json`. Don't edit by hand.", "",
+             "Lists every item you can buy, find or be given, that wild Pokémon hold, or that evolves a Pokémon. Selling an item gives half its price. "
+             "Wild Pokémon hold their common item 50% of the time and their rare item 5%.", ""]
+    for item in items:
+        name = machine_label(item, machine_moves)
+        lines += ["## %s" % name, "", "- Pocket: %s" % POCKET_NAMES.get(pockets[item], pretty(pockets[item]))]
+        if prices.get(item):
+            lines.append("- Price: ₽{:,}".format(prices[item]))
+        if descriptions.get(item):
+            lines.append("- Description: %s" % descriptions[item])
+        if item in machine_moves:
+            lines.append("- Teaches: %s" % pretty(machine_moves[item]))
+        if item in sold:
+            lines.append("- Sold: %s" % "; ".join(shop + (" (%d badges)" % badges if badges else "") for shop, badges in sold[item]))
+        for how_label, kinds in (("Found", ("Item ball", "Hidden")), ("Prize", ("Prize", "BP")), ("Given", None)):
+            places = [entry for entry in found.get(item, []) if (entry[1] in kinds if kinds else entry[1] not in ("Item ball", "Hidden", "Prize", "BP"))]
+            if places:
+                parts = []
+                for place, how, count in places:
+                    if how in ("Prize", "BP"):  # the count is the price, in Game Corner coins or Battle Points
+                        parts.append("%s (%s %s)" % (place, "{:,}".format(count), "coins" if how == "Prize" else "BP"))
+                        continue
+                    detail = ("hidden" if how == "Hidden" else "item ball" if how == "Item ball" else "" if how == "Gift" else how)
+                    detail = ", ".join(x for x in (detail, "×%d" % count if count > 1 else "") if x)
+                    parts.append("%s (%s)" % (place, detail) if detail else place)
+                lines.append("- %s: %s" % (how_label, "; ".join(parts)))
+        if trainer_held.get(item):
+            lines.append("- Held by trainers: %d Pokémon" % trainer_held[item])
+        if held.get(item):
+            lines.append("- Held by wild: %s" % ", ".join("%s (%d%%)" % (names[key], rate) for key, rate in held[item]))
+        if item in evolves:
+            lines.append("- Evolves: %s" % "; ".join(evolves[item]))
         lines.append("")
     return lines
 
@@ -880,6 +1034,7 @@ def main():
     write("moves", build_moves(species))
     write("abilities", build_abilities(species))
     write("items", build_items())
+    write("itemdex", build_itemdex(species))
 
 
 if __name__ == "__main__":

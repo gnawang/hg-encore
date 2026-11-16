@@ -17,6 +17,8 @@ and the work still planned.
   scripts, so update it yourself when scripts or legendaries change.
 - Pushing changed reference pages to `main` republishes the reference site through `.github/workflows/reference-site.yml`.
 - After changing wild encounters, run `python3 scripts/build_dex_areas.py` too, which updates `data/PokedexArea.c`.
+- After changing items on maps, their gifts or prizes, rerun `python3 scripts/build_item_locations.py path/to/pokeheartgold` (a pret checkout)
+  and then `build_reference_docs.py`. Encore's own item gifts are in `ENCORE_ITEM_GIFTS` in `build_reference_docs.py`; add new ones there.
 - Map objects and warps are built from `data/eventdata/zone_event/`, which holds only the maps Encore changes (`BUILD_DUMPED_EVENTDATA` is on). To hide an object
   without changing script object IDs, set its `hidden_flag` to `FLAG_GOT_BAG`, which is set in the opening and never cleared. Don't delete it from the list.
   Some outdoor maps, such as Route 47, stack levels on the same tiles, so collision data alone doesn't prove a new object is reachable. Check it in the emulator.

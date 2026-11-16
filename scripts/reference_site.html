@@ -85,6 +85,16 @@ dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;mar
 .mv:hover{color:var(--gold);text-decoration-color:var(--gold)}
 .abl{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted;text-decoration-color:var(--muted);text-underline-offset:3px}
 .abl:hover{color:var(--gold);text-decoration-color:var(--gold)}
+.itm{border:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left;text-decoration:underline dotted;text-decoration-color:var(--muted);text-underline-offset:3px}
+.itm:hover{color:var(--gold);text-decoration-color:var(--gold)}
+/* Evolution line: Pokémon, then an arrow, the method and an arrow for each branch. A split stacks its branches, with arrows fanning out. */
+.evo{display:flex;align-items:center;overflow-x:auto;padding:2px 0 4px}
+.evn{display:flex;align-items:center;gap:10px;flex:none}
+.evb{display:flex;flex-direction:column;gap:10px}
+.evr{display:flex;align-items:center;gap:8px}
+.eva{color:var(--gold);font:600 18px/1 var(--display);flex:none}
+.evm{font-size:12.5px;line-height:1.3;color:var(--muted);max-width:170px;text-align:center}
+.evc .mon{color:var(--gold);font-weight:700;text-decoration:none;cursor:default}
 .rules{margin:8px 0 0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:3px}
 .team{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
 .card{border:1px solid var(--line);border-radius:6px;padding:9px 11px;display:flex;flex-direction:column;gap:5px;min-width:0}
@@ -117,7 +127,7 @@ dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;mar
 <body>
 <header><div class="wrap">
 <h1>HeartGold Encore Reference</h1>
-<p class="sub">Every Pokémon, move and ability, wild encounters, trainer teams, what the shops sell, and gifts, trades and one-off encounters. Built from the current game data.</p>
+<p class="sub">Every Pokémon, move, ability and item, wild encounters, trainer teams, what the shops sell, and gifts, trades and one-off encounters. Built from the current game data.</p>
 <nav role="tablist" id="tabs"></nav>
 </div></header>
 <main><div class="wrap cols">
@@ -192,18 +202,52 @@ const machKey=n=>{const k=MACH.get(n)||'';const m=k.match(/^(TM|TR|HM)(\d+)$/);r
 const MON_RE=new RegExp('\\b('+[...byName.keys()].sort((a,b)=>b.length-a.length).map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')\\b','g');
 const linkMons=s=>esc(s).replace(MON_RE,n=>mon(n));
 D.G.forEach(g=>{g.s=(g.name+' '+g.p.join(' ')+' '+g.t.flatMap(t=>t.r.flat()).join(' ')).toLowerCase()});
-const TABS={pokemon:'Pokémon',moves:'Moves',abilities:'Abilities',wild:'Locations',others:'Trainers',trainers:'Key Trainers',items:'Shops',events:'Events/Gifts'};
+// Items: by name, and TMs, TRs and HMs also by their code ("TM024"), which is how other pages name them.
+// Each pocket alphabetically, except machines: TMs, then TRs, then HMs, by number.
+{const po=[...new Set(D.X.map(i=>i.pk))],mk=n=>{const m=n.match(/^(TM|TR|HM)(\d+) /);return m?{TM:0,TR:1000,HM:2000}[m[1]]+ +m[2]:-1};
+  D.X.sort((a,b)=>po.indexOf(a.pk)-po.indexOf(b.pk)||mk(a.name)-mk(b.name)||a.name.localeCompare(b.name))}
+const byItem=new Map(D.X.map(i=>[i.name,i]));
+D.X.forEach(i=>{const k=i.name.match(/^((?:TM|TR|HM)\d+) /);if(k)byItem.set(k[1],i);i.g=i.pk;
+  i.s=(i.name+' '+i.pk+' '+i.desc+' '+[...i.sold,...i.found,...i.prize,...i.given].map(x=>x[0]).join(' ')+' '+i.held.map(x=>x[0]).join(' ')+' '+i.evo.map(x=>x[0]+' '+x[1]).join(' ')).toLowerCase()});
+const itb=(n,label)=>{const i=byItem.get(n);return i?`<button class="itm" data-it="${esc(i.name)}">${esc(label||n)}</button>`:esc(label||n)};
+const itemList=s=>s.split(', ').map(n=>itb(n)).join(', ');
+// HELD: Pokémon name -> the items it holds in the wild, with the chance.
+const HELD=new Map();D.X.forEach(i=>i.held.forEach(([n,r])=>{if(!HELD.has(n))HELD.set(n,[]);HELD.get(n).push([i.name,r])}));
+const shopIdx=new Map(D.I.map((s,i)=>[s.name,i]));
+const shopb=n=>shopIdx.has(n)?`<button class="lk" data-sh="${shopIdx.get(n)}">${esc(n)}</button>`:esc(n);
+// Links Pokémon, ability and item names in free text in one pass, longest names first. A Pokémon wins over an item of the same name.
+const LINKS=new Map();
+[...byName.keys()].forEach(n=>LINKS.set(n,()=>mon(n)));
+[...byAb.keys()].forEach(n=>{if(!LINKS.has(n))LINKS.set(n,()=>abl(n))});
+D.X.forEach(i=>{if(!LINKS.has(i.name))LINKS.set(i.name,()=>itb(i.name))});
+const unesc=s=>s.replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&');
+const ALL_RE=new RegExp('(?<![\\w’])('+[...LINKS.keys()].sort((a,b)=>b.length-a.length).map(n=>esc(n).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\w’])','g');
+const linkAll=s=>esc(s).replace(ALL_RE,m=>LINKS.get(unesc(m))());
+// Evolution lines. EVO: Pokémon -> [[next, [methods]]], one entry per next Pokémon. PREV: Pokémon -> the one it evolves from.
+const EVO=new Map(),PREV=new Map();
+D.P.forEach(p=>p.evo.forEach(e=>{const m=e.match(/^(.*) → (.*)$/);if(!m||!byName.has(m[2]))return;
+  if(!EVO.has(p.name))EVO.set(p.name,[]);const a=EVO.get(p.name),x=a.find(y=>y[0]===m[2]);x?x[1].push(m[1]):a.push([m[2],[m[1]]]);if(!PREV.has(m[2]))PREV.set(m[2],p.name)}));
+function evoLine(p){let r=p.name;const seen=new Set([r]);while(PREV.has(r)&&!seen.has(PREV.get(r))){r=PREV.get(r);seen.add(r)}
+  return EVO.has(r)?`<div class="evo">${evoNode(r,p.name,new Set())}</div>`:''}
+// One Pokémon and its branches. Branches above the middle get ↗, below it ↘, and the middle one →.
+function evoNode(n,cur,seen){seen.add(n);const kids=(EVO.get(n)||[]).filter(k=>!seen.has(k[0]));const me=n===cur?`<span class="evc">${mon(n)}</span>`:mon(n);
+  if(!kids.length)return `<div class="evn">${me}</div>`;const c=(kids.length-1)/2;
+  return `<div class="evn">${me}<div class="evb">${kids.map(([t,ms],i)=>`<div class="evr"><span class="eva" aria-hidden="true">${i<c?'↗':i>c?'↘':'→'}</span><span class="evm">${ms.map(linkAll).join('<br>or ')}</span><span class="eva" aria-hidden="true">→</span>${evoNode(t,cur,seen)}</div>`).join('')}</div></div>`}
+const TABS={pokemon:'Pokémon',moves:'Moves',abilities:'Abilities',itemdex:'Items',wild:'Locations',others:'Trainers',trainers:'Key Trainers',items:'Shops',events:'Events/Gifts'};
+const POCKETS=[...new Set(D.X.map(i=>i.pk))];
 // Each tab keeps its own search, selection and scroll positions, so leaving a tab and coming back shows it as it was. Each starts on its first entry.
-const st={tab:'pokemon',q:Object.fromEntries(Object.keys(TABS).map(k=>[k,''])),sel:{pokemon:D.P[0],moves:D.M[0],abilities:D.A[0],wild:AREAS[0],others:OG[0],trainers:TG[0],items:D.I[0],events:D.G[0]},
-  scroll:{},type:'',mtype:'',big:false};
+const st={tab:'pokemon',q:Object.fromEntries(Object.keys(TABS).map(k=>[k,''])),sel:{pokemon:D.P[0],moves:D.M[0],abilities:D.A[0],itemdex:D.X[0],wild:AREAS[0],others:OG[0],trainers:TG[0],items:D.I[0],events:D.G[0]},
+  scroll:{},type:'',mtype:'',big:false,pocket:''};
 const $=id=>document.getElementById(id);
 function tabs(){$('tabs').innerHTML=Object.entries(TABS).map(([k,v])=>`<button role="tab" data-tab="${k}" aria-selected="${st.tab===k}">${v}</button>`).join('')}
 function controls(){
-  const ph={wild:'Search a place, Pokémon or trainer',trainers:'Search a trainer, Pokémon or move',others:'Search a trainer, class or Pokémon',pokemon:'Search a name, move or ability',moves:'Search a move or a Pokémon that learns it',abilities:'Search an ability or a Pokémon that has it',items:'Search a shop or item',events:'Search a Pokémon or place'}[st.tab];
+  const ph={wild:'Search a place, Pokémon or trainer',trainers:'Search a trainer, Pokémon or move',others:'Search a trainer, class or Pokémon',pokemon:'Search a name, move or ability',moves:'Search a move or a Pokémon that learns it',abilities:'Search an ability or a Pokémon that has it',itemdex:'Search an item, place or Pokémon',items:'Search a shop or item',events:'Search a Pokémon or place'}[st.tab];
   let h=`<input type="search" id="q" aria-label="${ph}" placeholder="${ph}" value="${esc(st.q[st.tab])}">`;
   if(st.tab==='pokemon')h+=`<select id="ty" aria-label="Filter by type"><option value="">All types</option>${Object.keys(TC).map(t=>`<option${st.type===t?' selected':''}>${t}</option>`).join('')}</select><label class="chk"><input type="checkbox" id="big"${st.big?' checked':''}>Type, ability or evolution changed</label>`;
   if(st.tab==='moves')h+=`<select id="mty" aria-label="Filter by type"><option value="">All types</option>${Object.keys(TC).map(t=>`<option${st.mtype===t?' selected':''}>${t}</option>`).join('')}</select>`;
+  if(st.tab==='itemdex')h+=`<select id="pkt" aria-label="Filter by pocket"><option value="">All pockets</option>${POCKETS.map(k=>`<option${st.pocket===k?' selected':''}>${esc(k)}</option>`).join('')}</select>`;
   h+='<div class="count" id="ct"></div>';$('ctl').innerHTML=h;
+  if(st.tab==='itemdex')$('pkt').onchange=e=>{st.pocket=e.target.value;list()};
   $('q').oninput=e=>{st.q[st.tab]=e.target.value;list()};
   if(st.tab==='pokemon'){$('ty').onchange=e=>{st.type=e.target.value;list()};$('big').onchange=e=>{st.big=e.target.checked;list()}}
   if(st.tab==='moves')$('mty').onchange=e=>{st.mtype=e.target.value;list()};
@@ -217,6 +261,7 @@ function list(){
   if(st.tab==='events'){cur=D.G.filter(g=>!q||g.s.includes(q));h=cur.map((g,i)=>`<button class="item" data-i="${i}" aria-current="${st.sel.events===g}"><span class="nm">${esc(g.name)}</span><span class="tag">${g.t.reduce((a,t)=>a+t.r.length,0)||''}</span></button>`).join('')}
   if(st.tab==='moves'){cur=D.M.filter(m=>(!q||m.s.includes(q))&&(!st.mtype||m.type===st.mtype));h=cur.map((m,i)=>`<button class="item" data-i="${i}" aria-current="${st.sel.moves===m}"><span class="dots"><i style="background:${TC[m.type]||'#666'}" title="${m.type}"></i></span><span class="nm">${esc(m.name)}</span><span class="tag">${esc(m.cat.slice(0,4))}${m.pow!=='–'?' '+esc(m.pow):''}</span></button>`).join('')}
   if(st.tab==='abilities'){cur=D.A.filter(a=>!q||a.s.includes(q));h=cur.map((a,i)=>`<button class="item" data-i="${i}" aria-current="${st.sel.abilities===a}"><span class="nm">${esc(a.name)}</span><span class="tag">${a.mons.length+a.hid.length}</span></button>`).join('')}
+  if(st.tab==='itemdex'){cur=D.X.filter(i=>(!q||i.s.includes(q))&&(!st.pocket||i.pk===st.pocket));h=grouped(cur,(i,n)=>`<button class="item" data-i="${n}" aria-current="${st.sel.itemdex===i}"><span class="nm">${esc(i.name)}</span><span class="tag">${esc(i.pr.replace(',',''))}</span></button>`)}
   if(st.tab==='items'){cur=D.I.filter(i=>!q||i.s.includes(q));h=cur.map((s,i)=>`<button class="item" data-i="${i}" aria-current="${st.sel.items===s}"><span class="nm">${esc(s.name)}</span><span class="tag">${s.r.length}</span></button>`).join('')}
   if(st.tab==='pokemon'){cur=D.P.filter(p=>(!q||p.s.includes(q))&&(!st.type||p.types.includes(st.type))&&(!st.big||p.big));h=cur.map((p,i)=>`<button class="item" data-i="${i}" aria-current="${st.sel.pokemon===p}"><span class="no">${num(p.n)}</span><span class="nm">${esc(p.name)}</span><span class="dots">${p.types.map(t=>`<i style="background:${TC[t]}" title="${t}"></i>`).join('')}</span></button>`).join('')}
   $('list').innerHTML=h||'<div class="empty">Nothing matches that search.</div>';
@@ -229,28 +274,29 @@ function wild(a){const sp=a.sp?`<section class="sec"><h3>Special conditions</h3>
   const also=AREAS.filter(x=>x!==a&&x.a===a.a);
   const tr=a.tr.length?`<section class="sec"><h3>Trainers<small>${a.tr.length}</small></h3><div class="scroll"><table><thead><tr><th scope="col">Trainer</th><th scope="col">Class</th><th scope="col">Fight</th><th scope="col">Pokémon</th></tr></thead><tbody>${a.tr.map(x=>`<tr><td><button class="lk" data-tt="${x.tab}" data-ti="${(x.tab==='trainers'?TG:OG).indexOf(x.e)}">${esc(x.e.name)}</button></td><td>${esc(x.e.g)}</td><td>${esc(x.f.fight||'–')}</td><td>${x.f.t.map(r=>`${mon(r[0])} <span class="note">${esc(r[1])}</span>`).join(', ')}</td></tr>`).join('')}</tbody></table></div></section>`:'';
   return `<div class="eh"><h2>${esc(a.a)}</h2><p>${esc(a.g)}${also.length?' · Also: '+also.map(x=>areaBtn(x,x.g)).join(', '):''}</p></div>`+(a.m.length?'':'<p class="note">No wild Pokémon here.</p>')+a.m.map(m=>`<section class="sec"><h3>${esc(m.k||'Encounters')}</h3>${tbl(m)}</section>`).join('')+sp+tr}
-function trainer(t){return `<div class="eh"><h2>${esc(t.name)}</h2><p>${esc(t.g)}</p></div>`+t.f.map(f=>`<section class="sec"><h3>${f.loc?locb(f.loc):'Not found in the game'}${f.fight?`<small>${esc(f.fight)}</small>`:''}</h3>${f.it?`<p class="note">Uses in battle: ${esc(f.it)}</p><br>`:''}<div class="team">${f.t.map(r=>{const p=byName.get(r[0]);const mv=r[4]==='Default'?'<li>Default moves for its level</li>':r[4].split(', ').map(x=>`<li>${mvt(x)}</li>`).join('');return `<div class="card"><div class="top">${mon(r[0])}<span>Lv ${esc(r[1])}</span></div>${p?chips(p.types):''}<small>${abl(r[2])}${r[3]!=='–'?' · '+esc(r[3]):''}</small><ol>${mv}</ol></div>`}).join('')}</div></section>`).join('')}
+function trainer(t){return `<div class="eh"><h2>${esc(t.name)}</h2><p>${esc(t.g)}</p></div>`+t.f.map(f=>`<section class="sec"><h3>${f.loc?locb(f.loc):'Not found in the game'}${f.fight?`<small>${esc(f.fight)}</small>`:''}</h3>${f.it?`<p class="note">Uses in battle: ${itemList(f.it)}</p><br>`:''}<div class="team">${f.t.map(r=>{const p=byName.get(r[0]);const mv=r[4]==='Default'?'<li>Default moves for its level</li>':r[4].split(', ').map(x=>`<li>${mvt(x)}</li>`).join('');return `<div class="card"><div class="top">${mon(r[0])}<span>Lv ${esc(r[1])}</span></div>${p?chips(p.types):''}<small>${abl(r[2])}${r[3]!=='–'?' · '+itb(r[3]):''}</small><ol>${mv}</ol></div>`}).join('')}</div></section>`).join('')}
 function pokemon(p){
   const tot=p.st.reduce((a,b)=>a+b,0);const where=FOUND.get(p.name);
   return `<div class="eh"><span class="no">${num(p.n)}</span><h2>${esc(p.name)}</h2><p>${chips(p.types)}</p></div>`+
-  (p.chg.length?`<section class="sec chg"><h3>Changed in Encore</h3><ul>${p.chg.map(c=>`<li>${c[0]?`<b>${esc(c[0])}:</b> `:''}${SET_CHG.has(c[0])?`<ol>${chgSet(c[0],c[1])}</ol>`:linkAbs(c[1])}${c[2]&&c[2].length?`<ol>${c[2].map(chgRow).join('')}</ol>`:''}</li>`).join('')}</ul></section>`:'')+
+  (p.chg.length?`<section class="sec chg"><h3>Changed in Encore</h3><ul>${p.chg.map(c=>`<li>${c[0]?`<b>${esc(c[0])}:</b> `:''}${SET_CHG.has(c[0])?`<ol>${chgSet(c[0],c[1])}</ol>`:linkAll(c[1])}${c[2]&&c[2].length?`<ol>${c[2].map(chgRow).join('')}</ol>`:''}</li>`).join('')}</ul></section>`:'')+
+  `<section class="sec"><h3>Evolution</h3>${evoLine(p)||'<p class="note">Doesn’t evolve.</p>'}</section>`+
   `<div class="grid2"><section class="sec"><h3>Base stats</h3>${p.st.map((v,i)=>`<div class="stat"><span>${STATS[i]}</span><span>${v}</span><span class="tr"><i style="width:${(v/255*100).toFixed(1)}%"></i></span></div>`).join('')}<div class="stat total"><span>Total</span><span>${tot}</span><span></span></div></section>
-  <section class="sec"><h3>Details</h3><dl><dt>Abilities</dt><dd>${p.ab.map(abl).join(', ')||'None'}</dd><dt>Hidden</dt><dd>${p.hid?abl(p.hid):'None'}</dd>${p.cyc?`<dt>Egg cycles</dt><dd>${p.cyc}</dd>`:''}<dt>Evolves</dt><dd>${p.evo.length?p.evo.map(esc).join('<br>'):'Does not evolve further'}</dd></dl></section></div>
+  <section class="sec"><h3>Details</h3><dl><dt>Abilities</dt><dd>${p.ab.map(abl).join(', ')||'None'}</dd><dt>Hidden</dt><dd>${p.hid?abl(p.hid):'None'}</dd>${p.cyc?`<dt>Egg cycles</dt><dd>${p.cyc}</dd>`:''}<dt>Wild held item</dt><dd>${HELD.has(p.name)?HELD.get(p.name).map(([n,r])=>`${itb(n)} <span class="note">${r}%</span>`).join('<br>'):'None'}</dd></dl></section></div>
   <section class="sec"><h3>Level-up moves<small>${p.lvl.length}</small></h3><div class="lv">${p.lvl.map(x=>`<div><b>${x[0]==='evolve'?'Evolve':'Lv '+x[0]}</b>${mvt(x[1])}</div>`).join('')}</div></section>
-  ${p.tm.length?`<section class="sec"><h3>TMs and HMs<small>${p.tm.length}</small></h3><div class="lv">${[...p.tm].sort((a,b)=>machKey(a)-machKey(b)||a.localeCompare(b)).map(x=>`<div><b>${esc(MACH.get(x)||'–')}</b>${mvt(x)}</div>`).join('')}</div></section>`:''}
+  ${p.tm.length?`<section class="sec"><h3>TMs and HMs<small>${p.tm.length}</small></h3><div class="lv">${[...p.tm].sort((a,b)=>machKey(a)-machKey(b)||a.localeCompare(b)).map(x=>`<div><b>${MACH.has(x)?itb(MACH.get(x)):'–'}</b>${mvt(x)}</div>`).join('')}</div></section>`:''}
   ${[['Tutor moves',p.tutor],['Egg moves',p.egg]].filter(x=>x[1].length).map(([k,v])=>`<section class="sec"><h3>${k}<small>${v.length}</small></h3><div class="lv">${v.map(x=>`<div>${mvt(x)}</div>`).join('')}</div></section>`).join('')}
-  <section class="sec"><h3>Where to find it</h3>${where?`<dl>${[...where].map(([a,k])=>`<dt>${areaBtn(a,a.g===MAIN?a.a:a.g+': '+a.a)}</dt><dd>${esc([...k].join(', '))}</dd>`).join('')}</dl>`:'<p class="note">Not in the wild. Evolve it, or check the gift list.</p>'}</section>`}
+  <section class="sec"><h3>Where to find it</h3>${where?`<dl>${[...where].map(([a,k])=>`<dt>${areaBtn(a,a.g===MAIN?a.a:a.g+': '+a.a)}</dt><dd>${linkAll([...k].join(', '))}</dd>`).join('')}</dl>`:'<p class="note">Not in the wild. Evolve it, or check the gift list.</p>'}</section>`}
 function chgRow(r){const m=r.match(/^(Evolve|Lv \d+): (.*) \((new|removed|was .*)\)$/);if(!m)return `<li><span>${esc(r)}</span></li>`;return `<li${m[3]==='removed'?' class="rm"':''}><b>${esc(m[1])}</b><span>${mvt(m[2],m[3]!=='removed')}</span><em>${esc(m[3]==='new'?'New':m[3]==='removed'?'Removed':m[3][0].toUpperCase()+m[3].slice(1))}</em></li>`}
 // "added Amnesia, Charm; removed Ally Switch" for TM, tutor and egg moves, one row per move like the level-up changes. TMs show their number.
 const SET_CHG=new Set(['TMs/HMs','Tutor moves','Egg moves']);
 function chgSet(k,v){return v.split('; ').flatMap(part=>{const m=part.match(/^(added|removed) (.*)$/);if(!m)return [`<li><span>${esc(part)}</span></li>`];const rm=m[1]==='removed';
-  return m[2].split(', ').map(n=>`<li${rm?' class="rm"':''}>${k==='TMs/HMs'?`<b>${esc(MACH.get(n)||'–')}</b>`:''}<span>${mvt(n,!rm)}</span><em>${rm?'Removed':'New'}</em></li>`)}).join('')}
+  return m[2].split(', ').map(n=>`<li${rm?' class="rm"':''}>${k==='TMs/HMs'?`<b>${MACH.has(n)?itb(MACH.get(n)):'–'}</b>`:''}<span>${mvt(n,!rm)}</span><em>${rm?'Removed':'New'}</em></li>`)}).join('')}
 function lvNum(l){return l==='evolve'?0:+l.slice(3)}
 function move(m){
   const lv=[...m.lvl].sort((a,b)=>lvNum(a[1])-lvNum(b[1]));
   return `<div class="eh"><h2>${esc(m.name)}</h2><p>${chips([m.type])} ${esc(m.cat)}</p></div>
   <div class="grid2"><section class="sec"><h3>Details</h3><dl><dt>Power</dt><dd>${esc(m.pow)}</dd><dt>Accuracy</dt><dd>${esc(m.acc)}</dd><dt>PP</dt><dd>${esc(m.pp)}</dd></dl><p class="note" style="margin-top:8px">${esc(m.desc)}</p></section>
-  <section class="sec"><h3>TM or HM</h3>${m.src.length?`<dl>${m.src.map(x=>{const k=x.match(/^(\S+) \((.*), (₽[\d,]+)\)$/);return k?`<dt>${esc(k[1])}</dt><dd>${esc(k[2])}, ${esc(k[3])}</dd>`:`<dt>${esc(x)}</dt><dd>Found or given in the game</dd>`}).join('')}</dl>`:'<p class="note">No TM or HM teaches this move.</p>'}</section></div>
+  <section class="sec"><h3>TM or HM</h3>${m.src.length?`<dl>${m.src.map(x=>{const k=x.match(/^(\S+) \((.*), (₽[\d,]+)\)$/);return k?`<dt>${itb(k[1])}</dt><dd>${shopb(k[2])}, ${esc(k[3])}</dd>`:`<dt>${itb(x)}</dt><dd>Found or given in the game</dd>`}).join('')}</dl>`:'<p class="note">No TM or HM teaches this move.</p>'}</section></div>
   ${lv.length?`<section class="sec"><h3>By level-up<small>${lv.length}</small></h3><div class="scroll"><table><thead><tr><th scope="col">Pokémon</th><th scope="col">Type</th><th scope="col">Level</th></tr></thead><tbody>${lv.map(x=>{const p=byName.get(x[0]);return `<tr><td>${mon(x[0])}</td><td>${p?chips(p.types):''}</td><td style="white-space:nowrap">${x[1]==='evolve'?'Evolve':esc(x[1].replace('Lv ',''))}</td></tr>`}).join('')}</tbody></table></div></section>`:''}
   ${[['By TM or HM',m.tm],['By move tutor',m.tutor],['As an egg move',m.egg]].filter(x=>x[1].length).map(([k,v])=>`<section class="sec"><h3>${k}<small>${v.length}</small></h3><p class="chips">${v.map(mon).join(', ')}</p></section>`).join('')}`}
 function ability(a){
@@ -259,10 +305,19 @@ function ability(a){
   (a.notes.length?`<section class="sec chg"><h3>Caveats</h3><ul>${a.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></section>`:'')+
   `<section class="sec"><h3>Details</h3><p class="note" style="color:var(--fg)">${esc(a.desc)}</p>${a.rules.length?`<ul class="rules">${a.rules.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>`:''}</section>
   <section class="sec"><h3>Pokémon with it<small>${rows.length}</small></h3><div class="scroll"><table><thead><tr><th scope="col">Pokémon</th><th scope="col">Type</th><th scope="col">How</th></tr></thead><tbody>${rows.map(([n,how])=>{const p=byName.get(n);return `<tr><td>${mon(n)}</td><td>${p?chips(p.types):''}</td><td>${how}</td></tr>`}).join('')}</tbody></table></div></section>`}
-function shop(s){const b=s.h.includes('Badges');return `<div class="eh"><h2>${esc(s.name)}</h2><p>${s.r.length} items${b?'. Items appear once you have the listed number of badges.':''}</p></div><section class="sec"><div class="scroll"><table><thead><tr>${s.h.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.r.map(r=>'<tr>'+r.map((c,i)=>{if(i===0){const k=c.match(/^((?:TM|HM|TR)\d+) (.*)$/);return `<td style="white-space:nowrap">${k?`<span class="mvt">${esc(k[1])} ${mvt(k[2])}</span>`:esc(c)}</td>`}if(s.h[i]==='Description')return `<td class="note">${esc(c)}</td>`;return `<td style="white-space:nowrap">${esc(c)}</td>`}).join('')+'</tr>').join('')}</tbody></table></div></section>`}
+function shop(s){const b=s.h.includes('Badges');return `<div class="eh"><h2>${esc(s.name)}</h2><p>${s.r.length} items${b?'. Items appear once you have the listed number of badges.':''}</p></div><section class="sec"><div class="scroll"><table><thead><tr>${s.h.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${s.r.map(r=>'<tr>'+r.map((c,i)=>{if(i===0){const k=c.match(/^((?:TM|HM|TR)\d+) (.*)$/);return `<td style="white-space:nowrap">${k?`<span class="mvt">${itb(k[1])} ${mvt(k[2])}</span>`:itb(c)}</td>`}if(s.h[i]==='Description')return `<td class="note">${esc(c)}</td>`;return `<td style="white-space:nowrap">${esc(c)}</td>`}).join('')+'</tr>').join('')}</tbody></table></div></section>`}
 function events(g){return `<div class="eh"><h2>${esc(g.name)}</h2></div>`+(g.p.length?`<section class="sec">${g.p.map(x=>`<p class="note">${esc(x)}</p>`).join('<br>')}</section>`:'')+
-  g.t.map(t=>`<section class="sec"><div class="scroll"><table><thead><tr>${t.h.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${t.r.map(r=>'<tr>'+r.map((c,i)=>`<td${t.h[i]==='Level'?' style="white-space:nowrap"':''}>${t.h[i]==='Where'?linkPlaces(c):t.h[i]==='Level'?esc(c):linkMons(c)}</td>`).join('')+'</tr>').join('')}</tbody></table></div></section>`).join('')}
-function entry(){const s=st.sel[st.tab];$('entry').innerHTML=st.tab==='wild'?wild(s):(st.tab==='trainers'||st.tab==='others')?trainer(s):st.tab==='moves'?move(s):st.tab==='abilities'?ability(s):st.tab==='items'?shop(s):st.tab==='events'?events(s):pokemon(s)}
+  g.t.map(t=>`<section class="sec"><div class="scroll"><table><thead><tr>${t.h.map(x=>`<th scope="col">${esc(x)}</th>`).join('')}</tr></thead><tbody>${t.r.map(r=>'<tr>'+r.map((c,i)=>`<td${t.h[i]==='Level'?' style="white-space:nowrap"':''}>${t.h[i]==='Where'?linkPlaces(c):t.h[i]==='Level'?esc(c):linkAll(c)}</td>`).join('')+'</tr>').join('')}</tbody></table></div></section>`).join('')}
+// An item's page: what it does, every way to get it, and the Pokémon it evolves.
+const price=s=>+String(s).replace(/\D/g,'');
+function itemPage(i){
+  const how=(list,label)=>list.length?`<dt>${label}</dt><dd>${list.map(([w,d])=>`${label==='Buy'?shopb(w):locb(w)}${d?` <span class="note">${esc(d)}</span>`:''}`).join('<br>')}</dd>`:'';
+  const get=how(i.sold,'Buy')+how(i.found,'Found')+how(i.prize,'Prize')+how(i.given,'Given')+(i.held.length?`<dt>Wild Pokémon</dt><dd>${i.held.map(([n,r])=>`${mon(n)} <span class="note">${r}%</span>`).join(', ')}</dd>`:'');
+  return `<div class="eh"><h2>${esc(i.name)}</h2><p>${esc(i.pk)}${i.pr?` · ${esc(i.pr)}, sells for ₽${(price(i.pr)/2).toLocaleString('en-US')}`:''}</p></div>
+  <section class="sec"><h3>Effect</h3><p class="note" style="color:var(--fg)">${esc(i.desc)||'No description.'}</p>${i.mv?`<p style="margin:8px 0 0">Teaches ${mvt(i.mv)}</p>`:''}</section>
+  <section class="sec"><h3>Where to get it</h3>${get?`<dl>${get}</dl>`:'<p class="note">No shop, item ball, hidden item, prize or gift in the map data gives it.</p>'}${i.tr?`<p class="note" style="margin-top:8px">Held by ${i.tr} Pokémon on trainers’ teams.</p>`:''}${i.sold.length&&i.pr?`<p class="note" style="margin-top:8px">Every shop charges ${esc(i.pr)}.</p>`:''}</section>
+  ${i.evo.length?`<section class="sec"><h3>Evolves<small>${i.evo.length}</small></h3><div class="scroll"><table><thead><tr><th scope="col">Pokémon</th><th scope="col">Into</th><th scope="col">How</th></tr></thead><tbody>${i.evo.map(([a,b,m])=>`<tr><td>${mon(a)}</td><td>${mon(b)}</td><td>${linkAll(m)}</td></tr>`).join('')}</tbody></table></div></section>`:''}`}
+function entry(){const s=st.sel[st.tab];$('entry').innerHTML=st.tab==='wild'?wild(s):(st.tab==='trainers'||st.tab==='others')?trainer(s):st.tab==='moves'?move(s):st.tab==='abilities'?ability(s):st.tab==='itemdex'?itemPage(s):st.tab==='items'?shop(s):st.tab==='events'?events(s):pokemon(s)}
 function show(){tabs();controls();list();entry()}
 // Switching tabs saves this tab's scroll positions and restores the new tab's. fresh=true (following a link) starts the new tab at the top.
 function go(t,fresh){hideTip();st.scroll[st.tab]=[window.scrollY,$('list').scrollTop];st.tab=t;try{history.replaceState(null,'','#'+t)}catch(e){}show();
@@ -276,18 +331,22 @@ function hideTip(){$('tip').hidden=true}
 function showTip(b){let html,cls='tip';
   if(b.classList.contains('mv')){const m=byMove.get(b.dataset.m);if(!m||st.tab==='moves')return;html=tipHtml(m)}
   else if(b.classList.contains('abl')){const a=byAb.get(b.dataset.ab);if(!a||(st.tab==='abilities'&&st.sel.abilities===a))return;html=`<h4>${esc(a.name)}</h4><p>${esc(a.desc)}</p>`;cls='tip abt'}
+  else if(b.classList.contains('itm')){const i=byItem.get(b.dataset.it);if(!i||(st.tab==='itemdex'&&st.sel.itemdex===i))return;
+    html=`<h4>${esc(i.name)}</h4><span class="cat" style="margin:0">${esc(i.pk)}${i.pr?' · '+esc(i.pr):''}</span><p>${esc(i.desc)}</p>${i.mv?`<p style="color:var(--fg)">Teaches ${esc(i.mv)}</p>`:''}`;cls='tip abt'}
   else{const p=byNum.get(b.dataset.p);if(!p||(st.tab==='pokemon'&&st.sel.pokemon===p))return;html=monTipHtml(p);cls='tip pk'}
   const t=$('tip');t.className=cls;t.innerHTML=html;t.hidden=false;
   const r=b.getBoundingClientRect(),w=t.offsetWidth,h=t.offsetHeight;let x=Math.min(Math.max(8,r.left),innerWidth-w-8),y=r.bottom+6;if(y+h>innerHeight-8)y=Math.max(8,r.top-h-6);t.style.left=x+'px';t.style.top=y+'px'}
-document.addEventListener('mouseover',e=>{const b=e.target.closest('.mv,.mon,.abl');if(b)showTip(b)});
-document.addEventListener('mouseout',e=>{const b=e.target.closest('.mv,.mon,.abl');if(b&&!b.contains(e.relatedTarget))hideTip()});
-document.addEventListener('focusin',e=>{const b=e.target.closest('.mv,.mon,.abl');b?showTip(b):hideTip()});
+document.addEventListener('mouseover',e=>{const b=e.target.closest('.mv,.mon,.abl,.itm');if(b)showTip(b)});
+document.addEventListener('mouseout',e=>{const b=e.target.closest('.mv,.mon,.abl,.itm');if(b&&!b.contains(e.relatedTarget))hideTip()});
+document.addEventListener('focusin',e=>{const b=e.target.closest('.mv,.mon,.abl,.itm');b?showTip(b):hideTip()});
 window.addEventListener('scroll',hideTip,{passive:true});
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.tab)return go(b.dataset.tab);
   if(b.dataset.p){st.sel.pokemon=D.P.find(p=>p.n==b.dataset.p);go('pokemon',true);return}
   if(b.dataset.m){st.sel.moves=byMove.get(b.dataset.m);st.q.moves='';st.mtype='';go('moves',true);return}
+  if(b.dataset.it){st.sel.itemdex=byItem.get(b.dataset.it);st.q.itemdex='';st.pocket='';go('itemdex',true);return}
+  if(b.dataset.sh!==undefined){st.sel.items=D.I[+b.dataset.sh];st.q.items='';go('items',true);return}
   if(b.dataset.ab){st.sel.abilities=byAb.get(b.dataset.ab);st.q.abilities='';go('abilities',true);return}
   if(b.dataset.a!==undefined){st.sel.wild=AREAS[+b.dataset.a];st.q.wild='';go('wild',true);return}
   if(b.dataset.tt){const t=b.dataset.tt;st.sel[t]=(t==='trainers'?TG:OG)[+b.dataset.ti];st.q[t]='';go(t,true);return}

@@ -444,6 +444,20 @@ Ability Capsules, Ability Patches and Mints are hg-engine features. Encore only 
   outside the Moves tab shows its type, power, accuracy, PP and description. Every listed move shows its type to its left. Hovering a Pokémon's name shows its
   number, types and abilities beside a hexagon of its base stats. Hovering an ability shows its name and description, and clicking it opens it on
   the Abilities tab. A Pokémon's "Changed in Encore" box lists its TM, tutor and egg move changes one move per row, like its level-up changes. `.github/workflows/reference-site.yml` publishes it to GitHub Pages when those pages change on `main`
+- The reference site's Pokémon tab shows each Pokémon's whole evolution line, with the method between each pair. A Pokémon with several evolutions,
+  such as Tyrogue or Eevee, fans its branches out with ↗, → and ↘ arrows. Pokémon, ability and item names are links with hover cards everywhere,
+  including evolution methods, changes, TM labels, wild held items, trainers' items and the shop and event tables.
+- The Items tab is an itemdex, from `documentation/reference/itemdex.md`: every item you can buy, find, win or be given, or that wild Pokémon or
+  trainers hold, plus HeartGold's TMs and HMs. Each shows its pocket, price, description, the move a TM teaches, every shop, item ball, hidden
+  item, Game Corner or Battle Frontier prize and gift that gives it, wild Pokémon that hold it, and the Pokémon it evolves. Hovering an item's
+  name anywhere shows its pocket, price and description.
+- `scripts/build_item_locations.py`: writes `scripts/item_locations.json`, the item balls, hidden items, Game Corner and Battle Frontier
+  prizes and gifts on each map, which `build_reference_docs.py` adds to the itemdex. Like the trainer locations, it reads a pret/pokeheartgold
+  checkout, so the JSON is committed. Where a gift depends on the version, it takes HeartGold's (the Blue Orb from Mr. Pokémon). Encore's own
+  gifts (Mom's items and the Collector's) are listed in `ENCORE_ITEM_GIFTS` in `build_reference_docs.py`. TM42 Facade is in no shop, map
+  or prize list pret has, so its page shows no source
+- The Pokémon page's evolution methods name the Dawn Stone for Gallade and Froslass (`Evolutions.c` writes it as 109), and read "Level up knowing
+  a Fairy-type move" and "Level up with Remoraid in the party" instead of the raw method names
 - `scripts/build_trainer_locations.py`: writes `scripts/trainer_locations.json`, where each trainer is fought and what the fight is (Gym battle, rematch, the
   rival's fight for your starter and so on), which `build_reference_docs.py` adds to the trainer pages. It reads a [pret/pokeheartgold](https://github.com/pret/pokeheartgold)
   checkout: the map objects and scripts that start each battle, and the phone rematch table. That checkout isn't in the repo, so the JSON is committed. Fights the

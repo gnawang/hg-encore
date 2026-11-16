@@ -3992,7 +3992,7 @@ This table covers types, abilities, stats and evolutions. Each Pokémon's entry 
 - Type: Normal
 - Abilities: Run Away, Adaptability (hidden: Anticipation)
 - Base stats (HP/Atk/Def/SpA/SpD/Spe): 55/55/50/45/65/55
-- Evolves: Use Leaf Stone → Leafeon; Use Ice Stone → Glaceon; Use Thunder Stone → Jolteon; Use Water Stone → Vaporeon; Use Fire Stone → Flareon; Has Move Type (Fairy) → Sylveon; Level up with high friendship, day → Espeon; Level up with high friendship, night → Umbreon
+- Evolves: Use Leaf Stone → Leafeon; Use Ice Stone → Glaceon; Use Thunder Stone → Jolteon; Use Water Stone → Vaporeon; Use Fire Stone → Flareon; Level up knowing a Fairy-type move → Sylveon; Level up with high friendship, day → Espeon; Level up with high friendship, night → Umbreon
 - Level-up moves: Tail Whip (1), Tackle (1), Helping Hand (1), Sand Attack (8), Covet (14), Growl (15), Baby-Doll Eyes (16), Disarming Voice (17), Swift (20), Quick Attack (22), Bite (29), Copycat (30), Wish (31), Baton Pass (36), Take Down (43), Charm (45), Last Resort (50), Double-Edge (51), Trump Card (57)
 - TMs/HMs: Attract, Baton Pass, Body Slam, Calm Mind, Captivate, Curse, Dig, Double Team, Double-Edge, Endure, Facade, Focus Energy, Frustration, Hidden Power, Hyper Voice, Iron Tail, Natural Gift, Protect, Rain Dance, Reflect, Rest, Return, Roar, Secret Power, Shadow Ball, Sleep Talk, Stored Power, Substitute, Sunny Day, Swagger, Toxic, Weather Ball, Work Up
 - Tutor moves: Headbutt, Heal Bell, Helping Hand, Last Resort, Mud-Slap, Snore, Swift
@@ -8275,7 +8275,7 @@ This table covers types, abilities, stats and evolutions. Each Pokémon's entry 
 - Type: Psychic/Fairy
 - Abilities: Synchronize, Trace (hidden: Telepathy)
 - Base stats (HP/Atk/Def/SpA/SpD/Spe): 38/35/35/65/55/50
-- Evolves: Level 30 → Gardevoir; Use 109, male → Gallade
+- Evolves: Level 30 → Gardevoir; Use Dawn Stone, male → Gallade
 - Level-up moves: Growl (1), Confusion (1), Double Team (1), Teleport (1), Draining Kiss (12), Lucky Chant (17), Psybeam (18), Magical Leaf (22), Life Dew (23), Confuse Ray (24), Calm Mind (25), Psychic (31), Imprison (36), Future Sight (39), Heal Pulse (43), Mystical Fire (44), Charm (45), Hypnosis (50), Dream Eater (53)
 - TMs/HMs: Attract, Body Slam, Calm Mind, Captivate, Charge Beam, Dazzling Gleam, Double Team, Dream Eater, Encore, Endure, Expanding Force, Facade, Flash, Fling, Frustration, Future Sight, Grass Knot, Hidden Power, Hyper Beam, Hyper Voice, Light Screen, Mega Punch, Metronome, Misty Terrain, Natural Gift, Protect, Psych Up, Psychic, Psychic Terrain, Psyshock, Rain Dance, Recycle, Reflect, Rest, Return, Safeguard, Secret Power, Shadow Ball, Shock Wave, Skill Swap, Sleep Talk, Snatch, Stored Power, Substitute, Sunny Day, Swagger, Taunt, Thief, Thunder Wave, Thunderbolt, Torment, Toxic, Trick Room, Triple Axel, Will-O-Wisp
 - Tutor moves: Fire Punch, Headbutt, Helping Hand, Ice Punch, Icy Wind, Magic Coat, Mud-Slap, Pain Split, Signal Beam, Snore, Swift, Thunder Punch, Trick, Zen Headbutt
@@ -10711,7 +10711,7 @@ This table covers types, abilities, stats and evolutions. Each Pokémon's entry 
 - Type: Ice
 - Abilities: Inner Focus, Ice Body (hidden: Moody)
 - Base stats (HP/Atk/Def/SpA/SpD/Spe): 50/50/50/50/50/50
-- Evolves: Level 42 → Glalie; Use 109, female → Froslass
+- Evolves: Level 42 → Glalie; Use Dawn Stone, female → Froslass
 - Level-up moves: Powder Snow (1), Leer (1), Astonish (1), Double Team (4), Bite (10), Icy Wind (13), Headbutt (19), Protect (22), Fake Tears (25), Ice Fang (28), Frost Breath (30), Crunch (31), Ice Shard (37), Hail (40), Icicle Crash (41), Snowscape (45), Blizzard (46), Weather Ball (50)
 - TMs/HMs: Attract, Avalanche, Blizzard, Body Slam, Captivate, Crunch, Double Team, Endure, Facade, Flash, Frustration, Hail, Hidden Power, Ice Beam, Ice Spinner, Icicle Spear, Light Screen, Natural Gift, Protect, Rain Dance, Rest, Return, Safeguard, Secret Power, Shadow Ball, Sleep Talk, Spikes, Substitute, Swagger, Toxic, Water Pulse, Weather Ball
 - Tutor moves: Block, Headbutt, Icy Wind, Rollout, Snore, Spite
@@ -13295,7 +13295,7 @@ This table covers types, abilities, stats and evolutions. Each Pokémon's entry 
 - Type: Water/Flying
 - Abilities: Swift Swim, Water Absorb (hidden: Water Veil)
 - Base stats (HP/Atk/Def/SpA/SpD/Spe): 45/20/50/60/120/50
-- Evolves: Other Party Mon (Remoraid) → Mantine
+- Evolves: Level up with Remoraid in the party → Mantine
 - Level-up moves: Tackle (1), Bubble (1), Supersonic (4), Bubble Beam (10), Headbutt (13), Wide Guard (16), Agility (19), Wing Attack (22), Water Pulse (28), Take Down (31), Air Slash (32), Confuse Ray (37), Bounce (40), Aqua Ring (46), Hydro Pump (49)
 - TMs/HMs: Aerial Ace, Agility, Amnesia, Attract, Blizzard, Captivate, Dive, Double Team, Earthquake, Endure, Facade, Frustration, Hail, Haze, Hidden Power, Hydro Pump, Ice Beam, Natural Gift, Protect, Rain Dance, Rest, Return, Rock Slide, Scald, Secret Power, Sleep Talk, Substitute, Surf, Swagger, Toxic, Water Pulse, Waterfall, Whirlpool
 - Tutor moves: Air Cutter, Bounce, Dive, Headbutt, Helping Hand, Icy Wind, Mud-Slap, Signal Beam, Snore, Swift, Tailwind
