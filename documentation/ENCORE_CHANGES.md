@@ -137,11 +137,34 @@ pre-evolutions officially get in a mainline game, by level-up, TM, tutor or egg.
   officially learned by level-up.
 - Egg moves that are key to a final evolution's moveset, and that no TM, TR or tutor in the game teaches, are added to its level-up moves. Level 1 means the
   Pokémon gets it on evolving or from the Move Relearner:
-  - Morning Sun: Arcanine, Rapidash, Sunflora (1), Venomoth (37). Moonlight: Exeggutor (1). Strength Sap: Vileplume, Bellossom, Victreebel, Jumpluff (1). Wish: Clefable (1).
-  - Rapid Spin: Tentacruel, Kabutops, Armaldo, Cloyster (1). Rock Blast: Cloyster (1).
+  - Morning Sun: Rapidash (1), Arcanine, Sunflora (20), Venomoth (37). Moonlight: Exeggutor (20). Strength Sap: Vileplume, Bellossom, Victreebel, Jumpluff (1). Wish: Clefable (20).
+  - Rapid Spin: Tentacruel, Kabutops, Armaldo (1), Cloyster (8). Rock Blast: Cloyster (26).
   - Fake Out: Raichu, Medicham, Infernape, Ambipom, Lopunny, Toxicroak, Weavile (1). Mach Punch and Bullet Punch: Hitmontop (1). Bullet Punch: Hariyama (1).
     Ice Shard: Donphan (1). Aqua Jet: Crawdaunt (1). Sucker Punch: Arbok (32).
   - Fire Fang and Ice Fang: Luxray (1). Freeze-Dry: Lapras (42). Belly Drum: Azumarill (50). Shell Smash: Torterra (50).
+
+**Learnset audit** (`scripts/audit_learnsets.py`). The union above gave many Pokémon strong moves far too early, since newer games teach them
+at lower levels and Encore's levels run higher than HeartGold's. Examples were Leafage beside Razor Leaf on Chikorita, Energy Ball on Bayleef at 26, Rock Blast on
+Onix at 1 and Sonic Boom on Buizel at 1. The audit applies these rules to every Pokémon's level-up moves, using HeartGold's own learnsets as the reference for what a
+Pokémon learns at each level. Sacred Gold's and HeartGold Generations' learnsets weren't available to it.
+
+- **Power by level.** An attack's effective power sets the earliest level it can be learned: up to 40 power at any level, 50 from 8, 60 from 14, 70 from 20,
+  80 from 26, 90 from 32, 100 from 38, 110 from 42, 120 from 46 and above that from 50. Multi-hit moves count three hits and two-hit moves two (Rock Blast as 75,
+  Dual Wingbeat as 80); variable-power moves count their usual power (Low Kick 60, Heavy Slam 80). One-hit KO moves wait until 35. A move HeartGold teaches this Pokémon
+  never moves past HeartGold's level, so for example Totodile keeps Bite at 13.
+- **Fixed damage.** Sonic Boom from 20, Dragon Rage, Psywave, Super Fang and Endeavor from 25, Night Shade and Seismic Toss from 15, and Final Gambit from 30.
+  This applies even where HeartGold teaches them earlier, as with Buizel's Sonic Boom.
+- **Recovery and setup.** Added recovery moves (Recover, Roost, Synthesis, Wish and the like) wait until 20, and added setup moves (Swords Dance, Rock Polish,
+  Agility and the like) until 30.
+- These count the Pokémon's earliest level, its evolution level. Luxray keeps Fire Fang at 1, because it can't exist before 30, but Cloyster, which evolves by stone, now learns Rock Blast at 26.
+- **Redundancy.** An added attack is dropped when the Pokémon already learns a same-type, same-category attack at least as strong within 3 levels. The stronger
+  move must be as accurate, and can't be one with a drawback: recoil, lock-in, a charge turn, a stat drop on the user, negative priority or variable power. Leafage goes
+  where Razor Leaf is, Rock Blast where Rock Slide is, Water Gun where Bubble is. An added status move with the same effect as one already learned goes too,
+  such as Play Nice beside Growl. Moves with a use of their own stay, such as priority, pivoting, draining and Freeze-Dry, and so do HeartGold's own moves and the egg moves listed above.
+
+398 Pokémon changed: 1,280 moves moved later or dropped, 186 of them dropped, and no move learned earlier. Generic trainers take their moves from these learnsets, so their teams
+follow. Key trainers' hand-picked movesets are unchanged. Run `python3 scripts/audit_learnsets.py` after editing `custom.json` to check new moves against the same rules,
+and `--write` to apply them.
 
 To compile-check without a ROM, generate the header with:
 
@@ -427,6 +450,7 @@ Ability Capsules, Ability Patches and Mints are hg-engine features. Encore only 
   rival's fight for your starter and so on), which `build_reference_docs.py` adds to the trainer pages. It reads a [pret/pokeheartgold](https://github.com/pret/pokeheartgold)
   checkout: the map objects and scripts that start each battle, and the phone rematch table. That checkout isn't in the repo, so the JSON is committed. Fights the
   map data can't place or name, such as the Cherrygrove rival and the tag battles, are set by hand in the script. Rerun it if trainers move or the area names change
+- `scripts/audit_learnsets.py`: checks level-up learnsets against the audit rules (see Learnsets)
 - `scripts/build_title_logo.py`: converts the title logo PNG
 - `scripts/build_dex_areas.py`: updates `data/PokedexArea.c` from the wild encounters
 
