@@ -20,8 +20,9 @@ and the work still planned.
 - Map objects and warps are built from `data/eventdata/zone_event/`, which holds only the maps Encore changes (`BUILD_DUMPED_EVENTDATA` is on). To hide an object
   without changing script object IDs, set its `hidden_flag` to `FLAG_GOT_BAG`, which is set in the opening and never cleared. Don't delete it from the list.
   Some outdoor maps, such as Route 47, stack levels on the same tiles, so collision data alone doesn't prove a new object is reachable. Check it in the emulator.
-- `data/learnsets/learnsets.json` is generated. Change learnsets through
-  `data/learnsets/base/custom.json` and regenerate it with the command in the changes file.
+- `data/learnsets/learnsets.json` is generated. Level-up moves in `data/learnsets/base/custom.json` are built by
+  `scripts/build_level_moves.py`, so change its rules or critical list and run it with `--write`. Egg moves are edited in `custom.json`.
+  Then regenerate `learnsets.json` with the command in the changes file.
 
 ## Building
 
