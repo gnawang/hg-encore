@@ -82,8 +82,8 @@ Special: Land swarm: Pidgey; Hoenn Sound: Furret, Raticate; Sinnoh Sound: Plusle
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Marill | 95% | 10–25 |
-| Azumarill | 5% | 15–25 |
+| Tentacool | 95% | 10–25 |
+| Tentacruel | 5% | 15–25 |
 
 **Old Rod**
 
@@ -119,20 +119,20 @@ Special: Surf swarm: Tentacool; Fishing swarm: Magikarp; Night fishing: Kingler
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Ledyba | 20% (Lv 4) | – | – |
 | Caterpie | 20% (Lv 4) | 20% (Lv 4) | 10% (Lv 4) |
-| Weedle | 10% (Lv 4) | 20% (Lv 4) | 10% (Lv 4) |
-| Pidgey | 10% (Lv 4) | – | – |
-| Taillow | 10% (Lv 5) | 5% (Lv 5) | – |
-| Lotad | 10% (Lv 5) | 10% (Lv 5) | 10% (Lv 5) |
-| Seedot | 5% (Lv 5) | 5% (Lv 5) | 5% (Lv 5) |
+| Weedle | 20% (Lv 4) | 20% (Lv 4) | 10% (Lv 4) |
+| Ledyba | 10% (Lv 4) | – | – |
+| Pidgey | 10% (Lv 4) | 10% (Lv 5) | – |
+| Seedot | 10% (Lv 5) | 5% (Lv 5) | 10% (Lv 5) |
+| Lotad | 10% (Lv 5) | 5% (Lv 5) | 10% (Lv 5) |
+| Taillow | 5% (Lv 5) | 10% (Lv 5) | – |
 | Kricketot | 5% (Lv 5) | – | 5% (Lv 5) |
 | Surskit | 5% (Lv 6) | 5% (Lv 6) | 5% (Lv 6) |
 | Ralts | 5% (Lv 6) | 5% (Lv 6) | 5% (Lv 6) |
 | Metapod | – | 10% (Lv 4) | – |
-| Kakuna | – | 20% (Lv 4–5) | – |
-| Spinarak | – | – | 30% (Lv 4–5) |
-| Hoothoot | – | – | 20% (Lv 4) |
+| Kakuna | – | 10% (Lv 4) | – |
+| Spinarak | – | – | 20% (Lv 4) |
+| Hoothoot | – | – | 25% (Lv 4–5) |
 
 **Surfing**
 
@@ -316,10 +316,11 @@ Special: Land swarm: Rattata; Hoenn Sound: Bibarel, Linoone; Sinnoh Sound: Spind
 | Nincada | 10% (Lv 10) | 10% (Lv 10) | 10% (Lv 10) |
 | Pachirisu | 10% (Lv 10) | 10% (Lv 10) | – |
 | Hoppip | 15% (Lv 11–12) | 15% (Lv 11–12) | – |
-| Magnemite | 15% (Lv 11–12) | 15% (Lv 11–12) | 15% (Lv 11–12) |
-| Ekans | 5% (Lv 11) | 5% (Lv 11) | 5% (Lv 11) |
+| Rattata | 10% (Lv 11) | 10% (Lv 11) | – |
+| Ekans | 10% (Lv 11–12) | 10% (Lv 11–12) | 10% (Lv 11–12) |
 | Drifloon | – | – | 10% (Lv 10) |
 | Wooper | – | – | 15% (Lv 11–12) |
+| Zubat | – | – | 10% (Lv 11) |
 
 **Surfing**
 
@@ -902,8 +903,8 @@ Special: Land swarm: Caterpie; Hoenn Sound: Butterfree, Beedrill; Sinnoh Sound: 
 | Growlithe | 20% (Lv 17) | 20% (Lv 17) | 20% (Lv 17) |
 | Vulpix | 20% (Lv 17) | 20% (Lv 17) | 20% (Lv 17) |
 | Nidorino | 10% (Lv 17) | 10% (Lv 17) | 10% (Lv 17) |
-| Nidorina | 20% (Lv 17–18) | 20% (Lv 17–18) | 15% (Lv 18) |
-| Stantler | 10% (Lv 18) | 10% (Lv 18) | 5% (Lv 18) |
+| Nidorina | 10% (Lv 17) | 10% (Lv 17) | 10% (Lv 18) |
+| Stantler | 20% (Lv 18) | 20% (Lv 18) | 10% (Lv 18) |
 | Combee | 5% (Lv 18) | 5% (Lv 18) | 10% (Lv 17) |
 | Plusle | 5% (Lv 18) | 5% (Lv 18) | 5% (Lv 19) |
 | Minun | 5% (Lv 19) | 5% (Lv 19) | 5% (Lv 19) |
@@ -918,9 +919,9 @@ Special: Land swarm: Nidoran♂; Hoenn Sound: Vespiquen, Vespiquen; Sinnoh Sound
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Growlithe | 20% (Lv 21) | 20% (Lv 21) | 30% (Lv 21–22) |
+| Growlithe | 20% (Lv 21) | 20% (Lv 21) | 20% (Lv 21) |
 | Vulpix | 20% (Lv 21) | 20% (Lv 21) | 20% (Lv 21) |
-| Stantler | 10% (Lv 21) | 10% (Lv 21) | 10% (Lv 21) |
+| Stantler | 10% (Lv 21) | 10% (Lv 21) | 20% (Lv 21–22) |
 | Ledian | 10% (Lv 22) | 10% (Lv 22) | – |
 | Pidgeotto | 10% (Lv 22) | 10% (Lv 22) | – |
 | Nidorino | 10% (Lv 22) | 10% (Lv 22) | – |
@@ -1005,12 +1006,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Weezing, Magmar; Sinnoh Sound: Chimec
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Swinub | 25% (Lv 42–43) | 25% (Lv 42–43) | 25% (Lv 42–43) |
-| Snover | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Spheal | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Seel | 15% (Lv 43–44) | 15% (Lv 43–44) | 15% (Lv 43–44) |
-| Smoochum | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1020,12 +1027,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Swinub | 25% (Lv 42–43) | 25% (Lv 42–43) | 25% (Lv 42–43) |
-| Snover | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Spheal | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Seel | 15% (Lv 43–44) | 15% (Lv 43–44) | 15% (Lv 43–44) |
-| Smoochum | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1035,13 +1048,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 25% (Lv 42–43) | 25% (Lv 42–43) | 25% (Lv 42–43) |
-| Swinub | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Spheal | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Shellder | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Seel | 15% (Lv 43–44) | 15% (Lv 43–44) | 15% (Lv 43–44) |
-| Smoochum | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1051,13 +1069,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 25% (Lv 42–43) | 25% (Lv 42–43) | 25% (Lv 42–43) |
-| Swinub | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Spheal | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Shellder | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Seel | 15% (Lv 43–44) | 15% (Lv 43–44) | 15% (Lv 43–44) |
-| Smoochum | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1067,13 +1090,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 25% (Lv 42–43) | 25% (Lv 42–43) | 25% (Lv 42–43) |
-| Swinub | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Spheal | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Shellder | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Seel | 15% (Lv 43–44) | 15% (Lv 43–44) | 15% (Lv 43–44) |
-| Smoochum | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1083,13 +1111,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Piloswine | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Sealeo | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Snorunt | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Dewgong | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Jynx | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1099,13 +1132,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Piloswine | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Sealeo | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Snorunt | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Dewgong | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Jynx | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1115,13 +1153,18 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Piloswine | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Sealeo | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Snorunt | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Dewgong | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Jynx | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Delibird | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -1136,13 +1179,13 @@ Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chat
 | Luxio | 10% (Lv 26) | 10% (Lv 26) | 10% (Lv 26) |
 | Cherubi | 10% (Lv 26) | 10% (Lv 26) | – |
 | Mankey | 10% (Lv 26) | 10% (Lv 26) | 10% (Lv 26) |
-| Voltorb | 10% (Lv 26) | 10% (Lv 26) | 10% (Lv 26) |
+| Voltorb | 10% (Lv 26) | 10% (Lv 26) | 20% (Lv 26) |
 | Elekid | 5% (Lv 27) | 5% (Lv 27) | 5% (Lv 27) |
 | Farfetch’d | 5% (Lv 27) | 5% (Lv 27) | 5% (Lv 27) |
 | Miltank | 5% (Lv 27) | 5% (Lv 27) | 5% (Lv 27) |
 | Tauros | 5% (Lv 27) | 5% (Lv 27) | 5% (Lv 27) |
-| Meowth | – | – | 20% (Lv 26) |
 | Skitty | – | – | 10% (Lv 26) |
+| Meowth | – | – | 10% (Lv 26) |
 
 Special: Land swarm: Farfetch’d; Hoenn Sound: Dodrio, Electabuzz; Sinnoh Sound: Skitty, Cherubi
 
@@ -1915,10 +1958,10 @@ Special: Surf swarm: Magikarp; Fishing swarm: Magikarp; Night fishing: Dratini
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Graveler | 30% (Lv 42–43) | 30% (Lv 42–43) | 30% (Lv 42–43) |
+| Graveler | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
 | Donphan | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
 | Gligar | 20% (Lv 42–43) | 20% (Lv 42–43) | 20% (Lv 42–43) |
-| Skarmory | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Skarmory | 20% (Lv 43) | 20% (Lv 43) | 20% (Lv 43) |
 | Grumpig | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
 | Camerupt | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
 | Torkoal | 5% (Lv 44–45) | 5% (Lv 44–45) | 5% (Lv 44–45) |
@@ -2504,13 +2547,18 @@ Special: Land swarm: Golbat; Hoenn Sound: Claydol, Hippowdon; Sinnoh Sound: Onix
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Golbat | 30% (Lv 42–44) | 30% (Lv 42–44) | 30% (Lv 42–44) |
-| Piloswine | 25% (Lv 42–44) | 25% (Lv 42–44) | 25% (Lv 42–44) |
-| Sealeo | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Glalie | 10% (Lv 42) | 10% (Lv 42) | 10% (Lv 42) |
-| Dewgong | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Jynx | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
-| Sneasel | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Raticate | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Haunter | 20% (Lv 42) | 20% (Lv 42) | 20% (Lv 42) |
+| Xatu | 10% (Lv 42) | 10% (Lv 42) | – |
+| Rapidash | 10% (Lv 42) | 10% (Lv 42) | – |
+| Golbat | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 43) |
+| Misdreavus | 10% (Lv 43) | 10% (Lv 43) | 10% (Lv 42) |
+| Dusclops | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Banette | 5% (Lv 43) | 5% (Lv 43) | 5% (Lv 43) |
+| Chimecho | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Bronzong | 5% (Lv 44) | 5% (Lv 44) | 5% (Lv 44) |
+| Noctowl | – | – | 10% (Lv 42) |
+| Murkrow | – | – | 10% (Lv 43) |
 
 Special: Land swarm: Rattata; Hoenn Sound: Zigzagoon, Spinda; Sinnoh Sound: Chatot, Meditite
 
@@ -2753,8 +2801,7 @@ Special: Surf swarm: Tentacool; Fishing swarm: Relicanth; Night fishing: Poliwhi
 | Seaking | 40% | 40 |
 | Krabby | 30% | 40 |
 | Lumineon | 15% | 40 |
-| Huntail | 10% | 40 |
-| Gorebyss | 5% | 40 |
+| Huntail | 15% | 40 |
 
 Special: Surf swarm: Clamperl; Fishing swarm: Magikarp; Night fishing: Seaking
 
@@ -2792,8 +2839,7 @@ Special: Surf swarm: Clamperl; Fishing swarm: Magikarp; Night fishing: Seaking
 | Seaking | 40% | 40 |
 | Chinchou | 30% | 40 |
 | Lumineon | 15% | 40 |
-| Huntail | 10% | 40 |
-| Gorebyss | 5% | 40 |
+| Gorebyss | 15% | 40 |
 
 Special: Surf swarm: Tentacool; Fishing swarm: Magikarp; Night fishing: Seaking
 
@@ -2803,7 +2849,8 @@ Special: Surf swarm: Tentacool; Fishing swarm: Magikarp; Night fishing: Seaking
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Marill | 100% | 30–35 |
+| Tentacool | 90% | 30–35 |
+| Tentacruel | 10% | 35 |
 
 **Old Rod**
 
@@ -2861,9 +2908,9 @@ Special: Surf swarm: Poliwag; Fishing swarm: Magikarp; Night fishing: Goldeen
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Hoppip | 60% | 10 |
+| Psyduck | 60% | 10 |
 | Goldeen | 30% | 5 |
-| Skiploom | 5% | 10 |
+| Golduck | 5% | 10 |
 | Masquerain | 5% | 10 |
 
 **Old Rod**
@@ -3038,7 +3085,7 @@ Special: Land swarm: Tauros; Hoenn Sound: Tangrowth, Dugtrio; Sinnoh Sound: Happ
 | Dodrio | 20% (Lv 44) | 20% (Lv 44) | – |
 | Skiploom | 20% (Lv 44) | 20% (Lv 44) | – |
 | Rapidash | 20% (Lv 44) | 20% (Lv 44) | 20% (Lv 44) |
-| Magneton | 10% (Lv 45) | 10% (Lv 45) | 10% (Lv 45) |
+| Raticate | 10% (Lv 45) | 10% (Lv 45) | 10% (Lv 45) |
 | Kangaskhan | 10% (Lv 45) | 10% (Lv 45) | 10% (Lv 45) |
 | Sandslash | 10% (Lv 45) | 10% (Lv 45) | 10% (Lv 45) |
 | Arbok | 10% (Lv 46) | 10% (Lv 46) | 10% (Lv 46) |
@@ -3297,12 +3344,12 @@ Special: Land swarm: Poochyena; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx,
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Butterfree | 30% (Lv 45–49) | 30% (Lv 45–49) | 25% (Lv 45–47) |
+| Butterfree | 25% (Lv 45–47) | 25% (Lv 45–47) | 25% (Lv 45–47) |
 | Beedrill | 25% (Lv 45–47) | 25% (Lv 45–47) | 25% (Lv 45–47) |
 | Pachirisu | 10% (Lv 45) | 10% (Lv 45) | 10% (Lv 45) |
 | Cherrim | 10% (Lv 46) | 10% (Lv 46) | – |
 | Ledian | 15% (Lv 46–49) | 15% (Lv 46–49) | – |
-| Pidgeotto | 10% (Lv 47) | 10% (Lv 47) | – |
+| Pidgeotto | 15% (Lv 47–49) | 15% (Lv 47–49) | – |
 | Ariados | – | – | 15% (Lv 46–49) |
 | Noctowl | – | – | 10% (Lv 46) |
 | Yanma | – | – | 15% (Lv 47–49) |
@@ -3401,9 +3448,9 @@ Special: Land swarm: Pidgey; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, Sh
 | Kadabra | 25% (Lv 45–47) | 25% (Lv 45–47) | 25% (Lv 45–47) |
 | Cherrim | 10% (Lv 45) | 10% (Lv 45) | – |
 | Raticate | 15% (Lv 46–47) | 15% (Lv 46–47) | 20% (Lv 45–46) |
-| Weepinbell | 15% (Lv 46–48) | 15% (Lv 46–48) | 20% (Lv 46) |
+| Weepinbell | 15% (Lv 46–48) | 15% (Lv 46–48) | 15% (Lv 46–48) |
 | Persian | – | – | 25% (Lv 45–47) |
-| Gloom | – | – | 10% (Lv 47–48) |
+| Gloom | – | – | 15% (Lv 46–48) |
 
 **Surfing**
 
@@ -3463,13 +3510,13 @@ Special: Land swarm: Rattata; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, S
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Growlithe | 35% (Lv 50–54) | 35% (Lv 50–54) | 30% (Lv 50–54) |
-| Vulpix | 25% (Lv 50–52) | 25% (Lv 50–52) | 25% (Lv 50–52) |
+| Growlithe | 30% (Lv 50–52) | 30% (Lv 50–52) | 25% (Lv 50–52) |
+| Vulpix | 30% (Lv 50–54) | 30% (Lv 50–54) | 25% (Lv 50–52) |
 | Staravia | 10% (Lv 50) | 10% (Lv 50) | – |
 | Kadabra | 15% (Lv 51–52) | 15% (Lv 51–52) | 10% (Lv 51) |
 | Xatu | 15% (Lv 51–54) | 15% (Lv 51–54) | 15% (Lv 51–54) |
 | Banette | – | – | 10% (Lv 50) |
-| Haunter | – | – | 10% (Lv 52) |
+| Haunter | – | – | 15% (Lv 52–54) |
 
 Special: Land swarm: Pidgeotto; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, Shinx
 
@@ -3535,7 +3582,7 @@ Special: Land swarm: Sableye; Surf swarm: Goldeen; Fishing swarm: Magikarp; Nigh
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Fearow | 60% | 15 |
+| Goldeen | 60% | 15 |
 | Chinchou | 40% | 10–15 |
 
 **Old Rod**
@@ -3583,8 +3630,8 @@ Special: Land swarm: Drowzee; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, S
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
 | Swellow | 20% (Lv 50) | 20% (Lv 50) | 20% (Lv 50) |
-| Nidorina | 35% (Lv 50–54) | 35% (Lv 50–54) | 35% (Lv 50–54) |
-| Nidorino | 15% (Lv 50–52) | 15% (Lv 50–52) | 15% (Lv 50–52) |
+| Nidorina | 25% (Lv 50–52) | 25% (Lv 50–52) | 25% (Lv 50–52) |
+| Nidorino | 25% (Lv 50–54) | 25% (Lv 50–54) | 25% (Lv 50–54) |
 | Skiploom | 15% (Lv 51–52) | 15% (Lv 51–52) | – |
 | Farfetch’d | 15% (Lv 51–54) | 15% (Lv 51–54) | – |
 | Quagsire | – | – | 15% (Lv 51–52) |
@@ -3628,8 +3675,8 @@ Special: Land swarm: Chansey; Surf swarm: Tentacool; Fishing swarm: Magikarp; Ni
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
 | Swellow | 20% (Lv 51) | 20% (Lv 51) | 20% (Lv 51) |
-| Nidorina | 35% (Lv 51–55) | 35% (Lv 51–55) | 35% (Lv 51–55) |
-| Nidorino | 15% (Lv 51–53) | 15% (Lv 51–53) | 15% (Lv 51–53) |
+| Nidorina | 25% (Lv 51–53) | 25% (Lv 51–53) | 25% (Lv 51–53) |
+| Nidorino | 25% (Lv 51–55) | 25% (Lv 51–55) | 25% (Lv 51–55) |
 | Skiploom | 15% (Lv 52–53) | 15% (Lv 52–53) | – |
 | Chansey | 15% (Lv 52–55) | 15% (Lv 52–55) | 15% (Lv 52–55) |
 | Venomoth | – | – | 15% (Lv 52–53) |
@@ -3643,8 +3690,8 @@ Special: Land swarm: Nidorina; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
 | Swellow | 20% (Lv 51) | 20% (Lv 51) | 20% (Lv 51) |
-| Nidorina | 35% (Lv 51–55) | 35% (Lv 51–55) | 35% (Lv 51–55) |
-| Nidorino | 15% (Lv 51–53) | 15% (Lv 51–53) | 15% (Lv 51–53) |
+| Nidorina | 25% (Lv 51–53) | 25% (Lv 51–53) | 25% (Lv 51–53) |
+| Nidorino | 25% (Lv 51–55) | 25% (Lv 51–55) | 25% (Lv 51–55) |
 | Skiploom | 15% (Lv 52–53) | 15% (Lv 52–53) | – |
 | Ditto | 15% (Lv 52–55) | 15% (Lv 52–55) | 15% (Lv 52–55) |
 | Venomoth | – | – | 15% (Lv 52–53) |
@@ -3800,18 +3847,18 @@ Special: Land swarm: Rattata; Surf swarm: Poliwag; Fishing swarm: Magikarp; Nigh
 | Staravia | 5% (Lv 49) | 5% (Lv 49) | – |
 | Roselia | 5% (Lv 50–51) | 5% (Lv 50–51) | 5% (Lv 50–51) |
 | Surskit | 5% (Lv 50–51) | 5% (Lv 50–51) | 5% (Lv 50–51) |
-| Gloom | – | – | 30% (Lv 47–48) |
+| Gloom | – | – | 20% (Lv 47) |
 | Noctowl | – | – | 20% (Lv 47–49) |
-| Venonat | – | – | 10% (Lv 48) |
+| Venonat | – | – | 20% (Lv 48) |
 | Mightyena | – | – | 5% (Lv 49) |
 
 **Surfing**
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Hoppip | 60% | 10 |
+| Psyduck | 60% | 10 |
 | Goldeen | 30% | 5 |
-| Skiploom | 5% | 10 |
+| Golduck | 5% | 10 |
 | Masquerain | 5% | 10 |
 
 **Old Rod**
@@ -3860,9 +3907,9 @@ Special: Land swarm: Bellsprout; Surf swarm: Goldeen; Fishing swarm: Magikarp; N
 
 | Pokémon | Chance | Levels |
 |---|---|---|
-| Hoppip | 60% | 10 |
+| Psyduck | 60% | 10 |
 | Goldeen | 30% | 5 |
-| Skiploom | 5% | 10 |
+| Golduck | 5% | 10 |
 | Masquerain | 5% | 10 |
 
 **Old Rod**
@@ -3999,12 +4046,12 @@ Special: Land swarm: Graveler; Hoenn Sound: Absol, Makuhita; Sinnoh Sound: Bronz
 
 | Pokémon | Morning | Day | Night |
 |---|---|---|---|
-| Ledian | 30% (Lv 45–46) | 30% (Lv 45–46) | – |
+| Ledian | 25% (Lv 45–47) | 25% (Lv 45–47) | – |
 | Caterpie | 20% (Lv 45) | 10% (Lv 45) | – |
 | Pidgey | 10% (Lv 45) | 20% (Lv 45) | – |
 | Metapod | 10% (Lv 46) | – | – |
+| Dustox | 10% (Lv 46) | 10% (Lv 46) | 5% (Lv 47) |
 | Beautifly | 10% (Lv 47) | 10% (Lv 47) | 5% (Lv 47) |
-| Dustox | 5% (Lv 47) | 5% (Lv 47) | 5% (Lv 47) |
 | Staravia | 5% (Lv 47) | 5% (Lv 47) | – |
 | Pachirisu | 5% (Lv 48–49) | 5% (Lv 48–49) | 5% (Lv 48–49) |
 | Cherrim | 5% (Lv 48–49) | 5% (Lv 48–49) | – |
@@ -4035,11 +4082,11 @@ Special: Land swarm: Caterpie; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, 
 | Mothim | 5% (Lv 70–72) | – | – |
 | Sunkern | – | 20% (Lv 64) | – |
 | Weepinbell | – | 20% (Lv 64) | – |
-| Illumise | – | 10% (Lv 65) | – |
+| Pidgeotto | – | 10% (Lv 65) | – |
 | Scyther | – | 10% (Lv 66) | – |
 | Pinsir | – | 10% (Lv 67) | – |
 | Ambipom | – | 10% (Lv 67) | – |
-| Pidgeotto | – | 5% (Lv 68) | – |
+| Illumise | – | 5% (Lv 68) | – |
 | Heracross | – | 5% (Lv 69) | – |
 | Volbeat | – | 5% (Lv 70–71) | – |
 | Grumpig | – | 5% (Lv 70–72) | – |
@@ -4047,9 +4094,9 @@ Special: Land swarm: Caterpie; Hoenn Sound: Plusle, Minun; Sinnoh Sound: Shinx, 
 | Misdreavus | – | – | 20% (Lv 64) |
 | Ariados | – | – | 10% (Lv 65) |
 | Gloom | – | – | 10% (Lv 66) |
-| Parasect | – | – | 10% (Lv 67) |
+| Dustox | – | – | 10% (Lv 67) |
 | Beautifly | – | – | 10% (Lv 67) |
-| Dustox | – | – | 5% (Lv 68) |
+| Parasect | – | – | 5% (Lv 68) |
 | Carnivine | – | – | 5% (Lv 69) |
 | Kricketune | – | – | 5% (Lv 70–71) |
 | Tropius | – | – | 5% (Lv 70–72) |

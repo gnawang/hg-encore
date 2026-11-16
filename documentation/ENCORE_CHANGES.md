@@ -295,6 +295,22 @@ member of its evolution family is #1–251, so Azurill, Munchlax and Magnezone d
 
 Overall the Hoenn and Sinnoh share fell from 20% to 15% of grass and cave encounters, and from about 15% to 3–6% of water encounters.
 
+**Paired Pokémon.** Counterpart Pokémon that share a table have the same rate there: Caterpie and Weedle, Metapod and Kakuna, Butterfree and
+Beedrill, Nidorina and Nidorino, Growlithe and Vulpix, Oddish and Bellsprout's lines (Gloom and Weepinbell), Mankey and Meowth, Gligar and Skarmory,
+Lotad and Seedot, Beautifly and Dustox, Volbeat and Illumise, Plusle and Minun, Zangoose and Seviper, and Solrock and Lunatone. Slots were swapped
+within each table, or the extra slot went to another Pokémon already there, so no table gained a Pokémon and the Hoenn and Sinnoh share didn't grow
+except on Route 30 at night and Route 2 north and Viridian Forest at night, where a 5% slot became 10%. The Route 19 and 20 Super Rods had Huntail at 4% and Gorebyss at 1%, which
+can't be made equal, so Route 19 has Huntail at 5% and Route 20 has Gorebyss at 5%.
+
+**Habitats.** Pokémon should live somewhere that suits them. It doesn't have to be exact: Numel on mountainous Route 46 is fine. These were changed:
+
+- Bell Tower 2F–10F had Ice Path's ice Pokémon. It now has Raticate and Haunter (vanilla's Rattata and Gastly, evolved for levels 42–44) with Xatu, Rapidash,
+  Golbat and Misdreavus, Noctowl and Murkrow at night, and Dusclops, Banette, Chimecho and Bronzong at 5% each.
+- Route 32's Magnemite became Rattata by day and Zubat at night, both vanilla Route 32 Pokémon. Its last slots went to Ekans.
+- Route 26's Magneton became Raticate.
+- Land Pokémon in surf tables: Hoppip and Skiploom in Cerulean City and on Routes 24 and 25 became Psyduck and Golduck, and Fearow on Route 10 became Goldeen.
+- Marill and Azumarill in the sea at Pallet Town and Cherrygrove City became Tentacool and Tentacruel, as in vanilla.
+
 ### Trainers (`data/Trainers.c`)
 
 Key trainers are rebuilt with team design drawn equally from Sacred Gold, Crystal Legacy and Polished Crystal, on top of vanilla rosters.
