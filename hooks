@@ -210,6 +210,15 @@ arm9 GiveMon 020541DC 5
 0002 AddWildPartyPokemon 0224855C
 
 arm9 ScrCmd_GiveEgg 0204D248 1
+
+# Encore: field HMs used by a helpful Pokémon when nobody knows them (src/field_hm.c)
+arm9 GetIdxOfFirstPartyMonWithMove 020542E8 2
+arm9 ScrCmd_183 02043724 1
+0001 ov01_021F3100 021F3100 2
+# Encore: Fly from the Pokégear map card (src/field_hm.c)
+0101 PokegearMap_HandleKeyInput 021EB568 1
+0101 PokegearMap_RemoveWindows 021E857C 1
+arm9 Task_StartMenu_HandleReturn_Pokegear 0203D550 1
 0001 ScrCmd_GiveTogepiEgg 022020CC 1
 arm9 sub_0206D328 0206D328 2
 

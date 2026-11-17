@@ -658,8 +658,25 @@ _0851:
 
 scr_seq_0003_033_give_item_verbose:
     call _085F
+    call _EncoreHMTip
     endstd
     end
+
+// Encore: HMs work from the bag (src/field_hm.c). Explain it when one is given; Fly has its own line.
+_EncoreHMTip:
+    compare VAR_SPECIAL_x8004, ITEM_HM02
+    goto_if_eq _EncoreFlyTip
+    compare VAR_SPECIAL_x8004, ITEM_HM01
+    goto_if_lt _EncoreHMTipEnd
+    compare VAR_SPECIAL_x8004, ITEM_HM08
+    goto_if_gt _EncoreHMTipEnd
+    npc_msg 124
+_EncoreHMTipEnd:
+    return
+
+_EncoreFlyTip:
+    npc_msg 125
+    return
 
 _085F:
     call _04F2

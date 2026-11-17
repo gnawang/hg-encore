@@ -122,3 +122,5 @@ Begin auto-battle.
 {STRVAR_1 3, 0, 0} used the Pocket Center!\nYour Pokémon were fully healed.
 Mom: Oh, and before you go...\rTake these too. They should make\nyour journey a little easier!
 You don’t have any Pokémon to heal!
+You don’t have to teach this HM\nto a Pokémon.\rOnce you have the right Badge, a\nhelpful Pokémon will lend a hand.\r
+You don’t have to teach Fly to\na Pokémon.\rOnce you have the Storm Badge, pick\na town on the Pokégear map\rand press A to fly there.\r

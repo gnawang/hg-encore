@@ -34,7 +34,7 @@
             "graphics_id": "SPRITE_TREE",
             "movement_type": 0,
             "trainer_type": 0,
-            "hidden_flag": "FLAG_GOT_BAG",
+            "hidden_flag": "FLAG_MAPTEMP_010",
             "script": "std_field_cut",
             "initial_dir": 0,
             "param0": 0,

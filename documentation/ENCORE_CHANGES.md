@@ -404,22 +404,90 @@ one on every Pokémon. AI flags and IVs are vanilla.
 - The Move Maniac in Blackthorn no longer asks for or takes a Heart Scale, and his lines are updated. His script is the vanilla dump with those
   checks removed. `BUILD_DUMPED_SCR_SEQ` is on so it gets built; only scripts present in `data/scr_seq/` replace the ROM's.
 
+### Field HMs without teaching them (`src/field_hm.c`, `data/scr_seq/scr_seq_0146.s`, `data/text/211.txt`, `data/text/273.txt`, `hooks`)
+
+A field HM works when it's in the bag and the player has its badge, even if no party Pokémon knows the move. A party
+Pokémon that knows the move still uses it as in vanilla. Otherwise a "helpful Pokémon" of a fixed species does it: the
+message reads "A helpful Pokémon used Cut!" and the cut-in shows that species, so a Pokémon that couldn't learn the move
+never uses it.
+
+| HM | Helpful Pokémon |
+|---|---|
+| HM01 Cut | Farfetch'd |
+| HM02 Fly (Pokégear map, below) | Pidgeot |
+| HM03 Surf | Lapras |
+| HM04 Strength | Machoke |
+| HM05 Whirlpool | Kingdra |
+| HM06 Rock Smash | Geodude |
+| HM07 Waterfall | Gyarados |
+| HM08 Rock Climb | Rhydon |
+
+How it works:
+
+- Script 146 holds the field HM scripts (Cut tree, Rock Smash rock, Strength boulder, Rock Climb wall, Surf, Waterfall, Whirlpool).
+  Each asks new script command `GetHMUser` (`NEW_COMMAND_GET_HM_USER`, script command 208 slot 2) instead of `get_party_slot_with_move`. It returns
+  the party slot of a Pokémon that knows the move, slot 7 (`HM_RENTAL_SLOT`) when the HM is in the bag, or 6 for nobody, which the scripts already
+  treat as "can't". The badge checks in the scripts are unchanged. Headbutt isn't an HM and is unchanged.
+- Slot 7 stands for the helpful Pokémon, `gHMRentalMon`, built at level 30 when `GetHMUser` picks it. Two hooks turn slot 7 into it: script
+  command 183 (`ScrCmd_183`, the field move cut-in) and overlay 1's `ov01_021F3100`, where the Surf, Waterfall, Whirlpool and Rock Climb
+  field tasks read the Pokémon.
+- `GetIdxOfFirstPartyMonWithMove` is hooked too. The field code asks it before offering Surf on water, and now gets a match when HM03
+  is in the bag. The same function is asked every frame about Waterfall, and checking the bag there slowed the overworld enough to
+  desync scripted walks, so Waterfall keeps the vanilla answer. Pressing A at a waterfall runs its script, which uses the helpful
+  Pokémon; walking straight into a waterfall without a Pokémon that knows it hasn't been checked. The bag check reads the TM pocket
+  directly, because `Bag_HasItem` loads item data from the ROM.
+- Messages 35 to 41 of text archive 211 are the helpful Pokémon's lines.
+
+Fly works from the Pokégear's map card. With the cursor on a town the player can fly to, "A: Fly here" shows in the
+region bar at the top, and pressing A closes the Pokégear and flies there: with a party Pokémon that knows Fly if there
+is one, else a helpful Pidgeot. The conditions are the party menu's for Fly: the Storm Badge, HM02 in the bag (or a
+Pokémon that knows Fly), a map that allows Fly, no follower and no Team Rocket disguise. As on the Fly map, only towns
+already visited count, and only in the player's region unless the player is at Indigo Plateau. A does nothing else on
+the map card in vanilla (X zooms, Y opens markings). Fly from the party menu is unchanged.
+
+- `PokegearMap_HandleKeyInput` (overlay 101, `021EB568`) is replaced by a copy that also handles A and draws the prompt.
+  On A it fills in the fly fields of `PokegearArgs`, as the Fly map does, and returns 4, which closes the Pokégear.
+- The fly-destination lookup checks the player's region through `curRegion`, which only the Fly map sets, so it's set
+  from the player's position for that call and then restored.
+- `Task_StartMenu_HandleReturn_Pokegear` (arm9, `0203D550`) starts the Fly task when a destination was picked, as
+  `Task_UseFlyInField` does after the Fly map.
+- The prompt is a window on the map card's top screen (sub BG 1, tiles `0x2AD`–`0x2CD`, below the card's own windows).
+  `PokegearMap_RemoveWindows` (overlay 101, `021E857C`) is replaced too, so it's removed with the others. It's
+  redrawn after marking mode, which repaints that screen. Its text is line 118 of `data/text/273.txt`.
+- The Pokégear can also open for a scripted phone call; Fly is off then.
+
+Each Leader whose badge allows an HM outside battle now adds one line at the end of the badge scene: with that badge and
+the HM in the Bag, a helpful Pokémon uses the move, so it doesn't need to be taught. Chuck explains flying from the
+Pokégear map instead. The line is appended to the Leader's text archive and shown after their last line (Clair's after
+her badge explanation); no vanilla line is changed. Those scripts are dumped into `data/scr_seq/` with their includes.
+
+| Badge | Leader | Script | Text |
+|---|---|---|---|
+| Zephyr (Rock Smash) | Falkner | `scr_seq_0859_T22GYM0101.s` | `558.txt` |
+| Hive (Cut) | Bugsy | `scr_seq_0869_T23GYM0102.s` | `567.txt` |
+| Plain (Strength) | Whitney | `scr_seq_0886_T25GYM0101.s` | `582.txt` |
+| Fog (Surf) | Morty | `scr_seq_0922_T27GYM0101.s` | `614.txt` |
+| Storm (Fly) | Chuck | `scr_seq_0877_T24GYM0101.s` | `574.txt` |
+| Glacier (Whirlpool) | Pryce | `scr_seq_0932_T28GYM0101.s` | `622.txt` |
+| Rising (Waterfall) | Clair, in Dragon's Den | `scr_seq_0112_D44R0103.s` | `130.txt` |
+| Earth (Rock Climb) | Blue | `scr_seq_0743_T02GYM0101.s` | `454.txt` |
+
+If the Bag is full when the Leader offers the TM, the line comes when the TM is collected later, as it follows the TM.
+
+When an HM is given (`std_give_item_verbose` in `scr_seq_00003_commonscript.s`), a new line says the HM doesn't need to be taught
+and that a helpful Pokémon uses it once the player has the badge (message 124 of `data/text/040.txt`). HM02 has its own
+line about flying from the Pokégear map (message 125).
+
 ### Flash (`bytereplacement`)
 
-Dark Cave and Rock Tunnel are lit. Each map's weather byte in the arm9 map header table is changed from `WEATHER_FLASH` to none.
-Whirl Islands and Cerulean Cave stay dark.
+Every map that needs Flash is lit: Dark Cave, Rock Tunnel, Whirl Islands and Cerulean Cave. Each map's weather byte in the arm9 map header table is changed from `WEATHER_FLASH` to none.
 
-### HM obstacles (`data/eventdata/zone_event/`)
+### HM obstacles
 
-65 Cut trees and Rock Smash rocks are hidden, by setting each object's hidden flag to `FLAG_GOT_BAG`, which is set in the opening and never cleared. They stay in the object list, so
-script object IDs don't change. Each obstacle was checked with a flood fill of the map's collision data, then its surroundings were read in the event scripts.
-
-- **Kept because they block required progress:** the Ilex Forest tree, the trees in front of the Vermilion and Celadon Gyms, and the three inside Celadon Gym.
-- **Kept as Rock Smash encounter spots:** every rock in Ruins of Alph (outside), Cianwood City, Dark Cave, Cliff Cave, Route 19, Vermilion City, Rock Tunnel, Victory Road and Cerulean Cave. Removing
-  them would remove those wild encounters.
-- **Kept as puzzles:** all Strength boulders, and the two rocks in Burned Tower B1F that are part of a boulder puzzle.
-- **Removed:** every other tree on routes and towns, Viridian Forest's two, and the rocks on Routes 3 and 32, in Pewter and Violet Cities, Burned Tower 1F, Ice Path B3F, Tohjo Falls and Mt. Silver Cave.
-  None of them is the only way to a required place. The Route 35 tree opens a shortcut to Route 36 that's west of Sudowoodo, so it doesn't bypass that gate.
+Every Cut tree, Rock Smash rock and Strength boulder is where vanilla puts it. Encore used to hide 65 of the trees and rocks, but
+that let the player skip required events, such as walking past the Route 30 tree to Violet City before getting the Pokédex. Field
+HMs now work without teaching them (above), so the obstacles cost the player little. `data/eventdata/zone_event/` still holds the
+29 maps that were edited, now with vanilla hidden flags.
 
 ### Legendaries and gifts (`data/scr_seq/scr_seq_0228_R30R0101.s`, `data/text/376.txt`, `src/script_new_cmds.c`)
 

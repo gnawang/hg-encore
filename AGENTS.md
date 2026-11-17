@@ -62,6 +62,7 @@ they contain game data. Run it from the repo root with `.venv/bin/python scripts
 | `team IN OUT --mon SPECIES:LEVEL[:ITEM[:MOVE+MOVE]]` | Replaces the party, with correct EXP, ability and HP for the species. Leave the item empty with `::` to give moves only |
 | `bag IN OUT --add ITEM:QTY[:POCKET]` | Adds items. Pockets: items (default), key, tms, mail, medicine, berries, balls, battle. The game doesn't check pockets for you, so use the item's real one (`fieldPocket` in `data/itemdata/itemdata.c`). Ability Capsules, Ability Patches and Mints are in medicine |
 | `damage IN OUT SLOT HP [--status 8]` | Sets HP and status (8 is poison) |
+| `badges IN OUT [--johto 0xFF] [--kanto 0]` | Sets the badges as bit masks, Zephyr (Johto) and Boulder (Kanto) being bit 0. Needs a party |
 | `party STATE` | Prints species, level, HP, status, ability, item and moves |
 | `step IN OUT INPUTS...` | Loads a state (`-` boots the ROM), applies inputs, saves `OUT.ds` and `OUT.png` |
 

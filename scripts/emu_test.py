@@ -456,6 +456,28 @@ def command_damage(args):
     emu.savestate.save_file(state_path(args.out))
 
 
+def command_badges(args):
+    # PlayerProfile: u16 name[8], u32 id, u32 money, u8 gender, u8 language, u8 johtoBadges ... u8 kantoBadges (+0x1F)
+    emu = open_emulator(args.rom, args.state)
+    _, mons = read_stable_party(emu)
+    trainer_id = struct.unpack_from("<I", mons[0].blocks, mons[0].a + 4)[0]
+    ram = read_ram(emu)
+    pattern = struct.pack("<I", trainer_id)
+    found = 0
+    offset = ram.find(pattern)
+    while offset >= 0:
+        # the profile starts with the 0xFFFF-terminated name, so the id follows a terminator
+        if offset % 4 == 0 and 0xFFFF in struct.unpack_from("<8H", ram, offset - 16):
+            write_ram(emu, offset + 0x0A, bytes([args.johto]))
+            write_ram(emu, offset + 0x0F, bytes([args.kanto]))
+            found += 1
+        offset = ram.find(pattern, offset + 1)
+    if not found:
+        raise SystemExit("No player profile found")
+    print("Badges set in %d place(s): Johto 0x%02X, Kanto 0x%02X" % (found, args.johto, args.kanto))
+    emu.savestate.save_file(state_path(args.out))
+
+
 def main():
     parser = argparse.ArgumentParser(description="Headless DeSmuME testing for test.nds")
     parser.add_argument("--rom", default="test.nds")
@@ -494,6 +516,13 @@ def main():
     damage.add_argument("hp", type=int)
     damage.add_argument("--status", type=int, default=0, help="8 is poison")
     damage.set_defaults(handler=command_damage)
+
+    badges = commands.add_parser("badges", help="set the badges, as bit masks (Zephyr is bit 0)")
+    badges.add_argument("state")
+    badges.add_argument("out")
+    badges.add_argument("--johto", type=lambda value: int(value, 0), default=0xFF)
+    badges.add_argument("--kanto", type=lambda value: int(value, 0), default=0)
+    badges.set_defaults(handler=command_badges)
 
     args = parser.parse_args()
     os.makedirs(STATE_DIR, exist_ok=True)

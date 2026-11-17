@@ -6784,6 +6784,18 @@ RunNewCommand NEW_COMMAND_QUEUE_NEW_REPEL, 0x800C
 RunNewCommand NEW_COMMAND_SET_LAST_MON_FATEFUL, 0
 .endm
 
+// Encore: party slot of the Pokémon that uses a field HM, HM_RENTAL_SLOT for a helpful Pokémon
+// when the HM is in the bag, or 6 for none (src/field_hm.c)
+.equ NEW_COMMAND_GET_HM_USER, 2
+.equ HM_RENTAL_SLOT, 7
+
+.macro GetHMUser,var,move
+.hword 208
+.byte NEW_COMMAND_GET_HM_USER
+.hword \var
+.hword \move
+.endm
+
 // Dummy
 .macro DummyTextTreasure,slot,unk
 .hword 209
