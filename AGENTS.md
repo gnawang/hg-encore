@@ -71,7 +71,7 @@ Inputs for `step`:
 |---|---|
 | `a`, `b`, `x`, `y`, `l`, `r`, `start`, `select`, `up`, `down`, `left`, `right` | Tap the button |
 | `a%6` | Tap 6 times. It's `%` because a shell would expand `*` |
-| `left:48` | Hold for 48 frames. Walking takes 16 frames per tile |
+| `left:48` | Hold for 48 frames. Walking takes 8 frames per tile at 60 fps (`ALWAYS_UNCAPPED_FRAME_RATE`), 16 at 30 fps |
 | `w120` | Wait 120 frames (60 frames is one second) |
 | `t:43:115` | Touch the bottom screen |
 | `snap` | Add a frame to the picture. The final frame is always added |

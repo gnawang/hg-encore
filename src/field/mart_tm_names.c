@@ -35,6 +35,8 @@ void LONG_CALL BufferDecorationName(MessageFormat *msgFmt, u32 fieldno, u32 deco
 
 static void Mart_BufferMachineMoveName(MessageFormat *msgFmt, u16 itemId)
 {
+    // ReadMsgDataIntoU16Array copies the whole message with no length limit, so this must hold the longest one read into it:
+    // move names are capped at 16 characters and message 50 (" Certainly.") is 11, plus the terminator
     u16 text[24];
     u16 move = MOVE_NONE;
 

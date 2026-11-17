@@ -175,9 +175,6 @@ D.I.forEach(i=>{i.s=(i.name+' '+i.r.map(r=>r[0]).join(' ')).toLowerCase()});
 const byAb=new Map(D.A.map(a=>[a.name,a]));
 D.A.forEach(a=>{a.s=(a.name+' '+a.desc+' '+a.mons.join(' ')+' '+a.hid.join(' ')).toLowerCase()});
 const abl=n=>byAb.has(n)?`<button class="abl" data-ab="${esc(n)}">${esc(n)}</button>`:esc(n);
-// Links ability names inside free text such as "Abilities changed from Overgrow", longest names first.
-const AB_RE=new RegExp('\\b('+[...byAb.keys()].sort((a,b)=>b.length-a.length).map(n=>esc(n).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')\\b','g');
-const linkAbs=s=>esc(s).replace(AB_RE,n=>abl(n.replace(/&amp;/g,'&')));
 const mvb=n=>byMove.has(n)?`<button class="mv" data-m="${esc(n)}">${esc(n)}</button>`:esc(n);
 // A move with its type chip to the left. link=false keeps the name as plain text, e.g. for a removed move.
 const mvt=(n,link=true)=>{const m=byMove.get(n);return `<span class="mvt">${m?`<span class="t mt" style="background:${TC[m.type]||'#666'}">${esc(m.type)}</span>`:''}<span>${link?mvb(n):esc(n)}</span></span>`};
@@ -198,9 +195,6 @@ function hex(stats,color){
 // TM, TR or HM label for each move, from its first machine, and an order for sorting TM lists: TMs, then TRs, then HMs.
 const MACH=new Map(D.M.filter(m=>m.src.length).map(m=>[m.name,m.src[0].split(' ')[0]]));
 const machKey=n=>{const k=MACH.get(n)||'';const m=k.match(/^(TM|TR|HM)(\d+)$/);return m?{TM:0,TR:1000,HM:2000}[m[1]]+ +m[2]:9999};
-// Links Pokémon names inside free text such as "Bulbasaur, Charmander or Squirtle", longest names first so Mewtwo isn't read as Mew.
-const MON_RE=new RegExp('\\b('+[...byName.keys()].sort((a,b)=>b.length-a.length).map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')\\b','g');
-const linkMons=s=>esc(s).replace(MON_RE,n=>mon(n));
 D.G.forEach(g=>{g.s=(g.name+' '+g.p.join(' ')+' '+g.t.flatMap(t=>t.r.flat()).join(' ')).toLowerCase()});
 // Items: by name, and TMs, TRs and HMs also by their code ("TM024"), which is how other pages name them.
 // Each pocket alphabetically, except machines: TMs, then TRs, then HMs, by number.

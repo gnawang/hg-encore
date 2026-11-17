@@ -5,6 +5,7 @@
 #
 # "Changed from hg-engine" sections compare against the commit Encore last merged from upstream.
 import argparse
+import functools
 import json
 import os
 import re
@@ -227,6 +228,7 @@ def read_species_ids():
         return {name: int(value) for name, value in re.findall(r"#define (SPECIES_\w+)\s+(\d+)", source.read())}
 
 
+@functools.lru_cache(maxsize=None)
 def item_constants_by_id():
     # {109: "ITEM_DAWN_STONE"}, the first constant for each number, for data that writes an item as a number
     ids = {}
@@ -689,7 +691,8 @@ def build_itemdex(species):
     lines = ["# Items", "",
              "Generated from the item, shop, species and evolution data by `scripts/build_reference_docs.py`, with field items and gifts from "
              "`scripts/item_locations.json`. Don't edit by hand.", "",
-             "Lists every item you can buy, find or be given, that wild Pokémon hold, or that evolves a Pokémon. Selling an item gives half its price. "
+             "Lists every item you can buy, find, win or be given, that wild Pokémon or trainers hold, or that evolves a Pokémon, and every HeartGold TM and HM. "
+             "Selling an item gives half its price. "
              "Wild Pokémon hold their common item 50% of the time and their rare item 5%.", ""]
     for item in items:
         name = machine_label(item, machine_moves)

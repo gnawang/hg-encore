@@ -2,7 +2,7 @@
 
 Generated from the item, shop, species and evolution data by `scripts/build_reference_docs.py`, with field items and gifts from `scripts/item_locations.json`. Don't edit by hand.
 
-Lists every item you can buy, find or be given, that wild Pokémon hold, or that evolves a Pokémon. Selling an item gives half its price. Wild Pokémon hold their common item 50% of the time and their rare item 5%.
+Lists every item you can buy, find, win or be given, that wild Pokémon or trainers hold, or that evolves a Pokémon, and every HeartGold TM and HM. Selling an item gives half its price. Wild Pokémon hold their common item 50% of the time and their rare item 5%.
 
 ## Black Flute
 

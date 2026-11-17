@@ -17,7 +17,7 @@ Then the level rules run:
 Run from the repo root: python3 scripts/build_level_moves.py [--write] [SPECIES_X ...]
 It prints what it would build; --write saves custom.json. Egg moves aren't touched. Then regenerate learnsets.json (see ENCORE_CHANGES.md).
 """
-import re, json, sys, collections
+import re, json, sys, collections, glob
 
 CUSTOM = 'data/learnsets/base/custom.json'
 custom = json.load(open(CUSTOM))
@@ -217,7 +217,7 @@ def mega_only_machine_moves(s):
     return sorted(m for sp, m in MEGA_ONLY if sp == s and m not in other)
 
 
-all_games = {f.split('/')[-1][:-5]: json.load(open(f)) for f in __import__('glob').glob('data/learnsets/base/[0-9][0-9]_*.json')}
+all_games = {f.split('/')[-1][:-5]: json.load(open(f)) for f in glob.glob('data/learnsets/base/[0-9][0-9]_*.json')}
 
 result, reports = {}, {}
 for s, entry in custom.items():
@@ -225,8 +225,9 @@ for s, entry in custom.items():
     result[s] = final
     result_entry = dict(entry, LevelMoves=[{'Level': x[0], 'Move': x[1]} for x in final])
     result_entry.pop('RemoveMachineMoves', None)
-    if mega_only_machine_moves(s):
-        result_entry['RemoveMachineMoves'] = mega_only_machine_moves(s)
+    removed = mega_only_machine_moves(s)
+    if removed:
+        result_entry['RemoveMachineMoves'] = removed
     custom[s] = result_entry
 
 if __name__ == '__main__':
