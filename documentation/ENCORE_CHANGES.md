@@ -1,6 +1,6 @@
 # Pokémon HeartGold Encore: changes from hg-engine
 
-Pokémon HeartGold Encore (called HeartGold Redux until November 2026) is a fork of [BluRosie/hg-engine](https://github.com/BluRosie/hg-engine).
+Pokémon HeartGold Encore (called HeartGold Redux until November 2026; the repo was renamed from `hg-redux` to [gnawang/hg-encore](https://github.com/gnawang/hg-encore) the same month) is a fork of [BluRosie/hg-engine](https://github.com/BluRosie/hg-engine).
 This file lists every change Encore makes on top of upstream, the design rules behind them,
 and the work still planned. Keep it up to date in the same commit as each change.
 
@@ -451,7 +451,7 @@ Ability Capsules, Ability Patches and Mints are hg-engine features. Encore only 
 
 - `scripts/emu_test.py`: plays `test.nds` headlessly for testing. See `AGENTS.md`
 - `scripts/build_reference_docs.py`: generates `documentation/reference/`
-- `scripts/build_reference_site.py`: builds the [reference site](https://gnawang.github.io/hg-redux/) from `documentation/reference/`, using `scripts/reference_site.html`.
+- `scripts/build_reference_site.py`: builds the [reference site](https://gnawang.github.io/hg-encore/) from `documentation/reference/`, using `scripts/reference_site.html`.
   Its tabs are Pokémon, moves (with who learns each and how), abilities (with who has each, the battle rules from `data/AbilityFlags.c`, and
   caveats where an ability works differently from its in-game text or not at all, kept in `ABILITY_NOTES` in `build_reference_docs.py`), locations, trainers, key trainers, shops, and events and gifts (from the hand-written
   `gift_static.md`). Locations holds every wild area plus the places that only have trainers, such as Gyms, and lists the trainers fought in each. Place names
