@@ -118,6 +118,8 @@ def merge_learnsets(ordered_data, cutoff_gen, inherit_level, inherit_egg, inheri
 
             if gen_key == cutoff_gen or inherit_machine:
                 merged[species]["MachineMoves"].update(fields.get("MachineMoves", []))
+                # Encore: custom.json can drop machine moves that earlier games add (see MEGA_ONLY in build_level_moves.py)
+                merged[species]["MachineMoves"].difference_update(fields.get("RemoveMachineMoves", []))
 
             if gen_key == cutoff_gen or inherit_tutor:
                 merged[species]["TutorMoves"].update(fields.get("TutorMoves", []))

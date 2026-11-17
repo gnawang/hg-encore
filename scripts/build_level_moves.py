@@ -41,6 +41,20 @@ CRITICAL = {  # (species, move): level before the level rules. Moves nothing els
 }
 CRITICAL = {('SPECIES_' + s, 'MOVE_' + m): lv for m, d in CRITICAL.items() for s, lv in d.items()}
 
+# Moves Legends Z-A gives only for a Mega's ability or new type. Encore has no Mega Evolution, so they're removed:
+# from level-up unless HeartGold teaches the move by level-up, and from TM compatibility unless a game other than Z-A gives it.
+MEGA_ONLY = {
+    'HERACROSS': ['ROCK_BLAST'],                                        # Skill Link
+    'STARYU': ['AQUA_JET'],                                             # Huge Power (Mega Starmie is a physical attacker)
+    'STARMIE': ['AQUA_JET', 'TAKE_DOWN', 'LIQUIDATION', 'TRIPLE_AXEL', 'BULK_UP'],
+    'PINSIR': ['TAKE_DOWN', 'AERIAL_ACE', 'DUAL_WINGBEAT'],             # Aerilate, Bug/Flying
+    'GLALIE': ['EXPLOSION'],                                            # Refrigerate
+    'CHARMANDER': ['DRAGON_RUSH'], 'CHARMELEON': ['DRAGON_RUSH'], 'CHARIZARD': ['DRAGON_RUSH'],  # Mega Charizard X, Fire/Dragon
+    'CLEFABLE': ['AIR_SLASH'],                                          # Fairy/Flying
+    'ABSOL': ['SHADOW_SNEAK', 'PHANTOM_FORCE', 'CONFUSE_RAY', 'SHADOW_CLAW'],  # Mega Absol Z, Dark/Ghost
+}
+MEGA_ONLY = {('SPECIES_' + s, 'MOVE_' + m) for s, ms in MEGA_ONLY.items() for m in ms}
+
 
 def cfg(v):
     m = re.fullmatch(r'\(\((\w+)\) \? \((\w+)\) : \((\w+)\)\)', v.strip())
@@ -143,7 +157,7 @@ def build(s):
     sv, za = game_moves('21_sv', s), game_moves('22_za', s)
     for m in list(sv) + [m for m in za if m not in sv]:
         lv = sv.get(m, za.get(m))
-        if m in entries or (lv == 1 and m in earlier): continue
+        if m in entries or (lv == 1 and m in earlier) or (s, m) in MEGA_ONLY: continue
         entries[m] = [lv, m, 'new']
     for (sp, m), lv in CRITICAL.items():
         if sp == s and m not in entries: entries[m] = [lv, m, 'critical']
@@ -197,11 +211,22 @@ def audit(s, entries):
     return keep, report
 
 
+def mega_only_machine_moves(s):
+    # MEGA_ONLY moves whose TM compatibility comes from Z-A alone; build_learnsets.py removes these (RemoveMachineMoves)
+    other = set().union(*(set(d.get(s, {}).get('MachineMoves', [])) for name, d in all_games.items() if name not in ('20_la', '22_za', '99_go')))
+    return sorted(m for sp, m in MEGA_ONLY if sp == s and m not in other)
+
+
+all_games = {f.split('/')[-1][:-5]: json.load(open(f)) for f in __import__('glob').glob('data/learnsets/base/[0-9][0-9]_*.json')}
+
 result, reports = {}, {}
 for s, entry in custom.items():
     final, reports[s] = audit(s, build(s))
     result[s] = final
     result_entry = dict(entry, LevelMoves=[{'Level': x[0], 'Move': x[1]} for x in final])
+    result_entry.pop('RemoveMachineMoves', None)
+    if mega_only_machine_moves(s):
+        result_entry['RemoveMachineMoves'] = mega_only_machine_moves(s)
     custom[s] = result_entry
 
 if __name__ == '__main__':

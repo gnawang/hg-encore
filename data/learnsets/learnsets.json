@@ -678,10 +678,6 @@
         "Move": "MOVE_INFERNO"
       },
       {
-        "Level": 42,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 46,
         "Move": "MOVE_FLARE_BLITZ"
       }
@@ -711,7 +707,6 @@
       "MOVE_DRAGON_DANCE",
       "MOVE_DRAGON_PULSE",
       "MOVE_DRAGON_RAGE",
-      "MOVE_DRAGON_RUSH",
       "MOVE_DRAGON_TAIL",
       "MOVE_DYNAMIC_PUNCH",
       "MOVE_ECHOED_VOICE",
@@ -877,10 +872,6 @@
         "Move": "MOVE_FLAMETHROWER"
       },
       {
-        "Level": 42,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 43,
         "Move": "MOVE_FIRE_SPIN"
       },
@@ -918,7 +909,6 @@
       "MOVE_DRAGON_DANCE",
       "MOVE_DRAGON_PULSE",
       "MOVE_DRAGON_RAGE",
-      "MOVE_DRAGON_RUSH",
       "MOVE_DRAGON_TAIL",
       "MOVE_DYNAMIC_PUNCH",
       "MOVE_ECHOED_VOICE",
@@ -1103,10 +1093,6 @@
         "Move": "MOVE_FIRE_BLAST"
       },
       {
-        "Level": 44,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 49,
         "Move": "MOVE_FIRE_SPIN"
       },
@@ -1152,7 +1138,6 @@
       "MOVE_DRAGON_DANCE",
       "MOVE_DRAGON_PULSE",
       "MOVE_DRAGON_RAGE",
-      "MOVE_DRAGON_RUSH",
       "MOVE_DRAGON_TAIL",
       "MOVE_DUAL_WINGBEAT",
       "MOVE_DYNAMIC_PUNCH",
@@ -6455,16 +6440,11 @@
         "Move": "MOVE_MYSTICAL_FIRE"
       },
       {
-        "Level": 52,
-        "Move": "MOVE_AIR_SLASH"
-      },
-      {
         "Level": 55,
         "Move": "MOVE_DOUBLE_EDGE"
       }
     ],
     "MachineMoves": [
-      "MOVE_AIR_SLASH",
       "MOVE_ALLURING_VOICE",
       "MOVE_ALLY_SWITCH",
       "MOVE_AMNESIA",
@@ -23727,10 +23707,6 @@
         "Move": "MOVE_RAPID_SPIN"
       },
       {
-        "Level": 12,
-        "Move": "MOVE_AQUA_JET"
-      },
-      {
         "Level": 15,
         "Move": "MOVE_RECOVER"
       },
@@ -23784,7 +23760,6 @@
       }
     ],
     "MachineMoves": [
-      "MOVE_AQUA_JET",
       "MOVE_ATTRACT",
       "MOVE_BIDE",
       "MOVE_BLIZZARD",
@@ -23904,10 +23879,6 @@
         "Move": "MOVE_SWIFT"
       },
       {
-        "Level": 12,
-        "Move": "MOVE_AQUA_JET"
-      },
-      {
         "Level": 20,
         "Move": "MOVE_BUBBLE_BEAM"
       },
@@ -23921,10 +23892,6 @@
       },
       {
         "Level": 32,
-        "Move": "MOVE_TAKE_DOWN"
-      },
-      {
-        "Level": 33,
         "Move": "MOVE_LIGHT_SCREEN"
       },
       {
@@ -23934,10 +23901,6 @@
       {
         "Level": 40,
         "Move": "MOVE_PSYCHIC"
-      },
-      {
-        "Level": 42,
-        "Move": "MOVE_LIQUIDATION"
       },
       {
         "Level": 44,
@@ -23952,14 +23915,12 @@
       "MOVE_AGILITY",
       "MOVE_ALLY_SWITCH",
       "MOVE_ANCIENT_POWER",
-      "MOVE_AQUA_JET",
       "MOVE_ATTRACT",
       "MOVE_AVALANCHE",
       "MOVE_BIDE",
       "MOVE_BLIZZARD",
       "MOVE_BRINE",
       "MOVE_BUBBLE_BEAM",
-      "MOVE_BULK_UP",
       "MOVE_CHARGE_BEAM",
       "MOVE_CHILLING_WATER",
       "MOVE_CONFIDE",
@@ -23990,7 +23951,6 @@
       "MOVE_ICE_BEAM",
       "MOVE_ICY_WIND",
       "MOVE_LIGHT_SCREEN",
-      "MOVE_LIQUIDATION",
       "MOVE_METEOR_BEAM",
       "MOVE_MIMIC",
       "MOVE_NATURAL_GIFT",
@@ -24033,7 +23993,6 @@
       "MOVE_TOXIC",
       "MOVE_TRICK",
       "MOVE_TRICK_ROOM",
-      "MOVE_TRIPLE_AXEL",
       "MOVE_TRI_ATTACK",
       "MOVE_WATERFALL",
       "MOVE_WATER_GUN",
@@ -25284,10 +25243,6 @@
         "Move": "MOVE_X_SCISSOR"
       },
       {
-        "Level": 32,
-        "Move": "MOVE_TAKE_DOWN"
-      },
-      {
         "Level": 35,
         "Move": "MOVE_THRASH"
       },
@@ -25313,7 +25268,6 @@
       }
     ],
     "MachineMoves": [
-      "MOVE_AERIAL_ACE",
       "MOVE_ATTRACT",
       "MOVE_BIDE",
       "MOVE_BODY_SLAM",
@@ -25332,7 +25286,6 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_DOUBLE_HIT",
       "MOVE_DOUBLE_TEAM",
-      "MOVE_DUAL_WINGBEAT",
       "MOVE_EARTHQUAKE",
       "MOVE_ENDURE",
       "MOVE_FACADE",
@@ -42994,10 +42947,6 @@
       {
         "Level": 25,
         "Move": "MOVE_COUNTER"
-      },
-      {
-        "Level": 28,
-        "Move": "MOVE_ROCK_BLAST"
       },
       {
         "Level": 31,
@@ -71117,14 +71066,6 @@
         "Move": "MOVE_FEINT"
       },
       {
-        "Level": 1,
-        "Move": "MOVE_CONFUSE_RAY"
-      },
-      {
-        "Level": 1,
-        "Move": "MOVE_SHADOW_SNEAK"
-      },
-      {
         "Level": 4,
         "Move": "MOVE_LEER"
       },
@@ -71161,20 +71102,12 @@
         "Move": "MOVE_BITE"
       },
       {
-        "Level": 32,
-        "Move": "MOVE_PHANTOM_FORCE"
-      },
-      {
         "Level": 33,
         "Move": "MOVE_DOUBLE_TEAM"
       },
       {
         "Level": 36,
         "Move": "MOVE_SLASH"
-      },
-      {
-        "Level": 40,
-        "Move": "MOVE_SHADOW_CLAW"
       },
       {
         "Level": 41,
@@ -71228,7 +71161,6 @@
       "MOVE_CHARGE_BEAM",
       "MOVE_CLOSE_COMBAT",
       "MOVE_CONFIDE",
-      "MOVE_CONFUSE_RAY",
       "MOVE_CUT",
       "MOVE_DARK_PULSE",
       "MOVE_DETECT",
@@ -71264,7 +71196,6 @@
       "MOVE_OMINOUS_WIND",
       "MOVE_PAYBACK",
       "MOVE_PERISH_SONG",
-      "MOVE_PHANTOM_FORCE",
       "MOVE_PLAY_ROUGH",
       "MOVE_PROTECT",
       "MOVE_PSYCHO_CUT",
@@ -71283,7 +71214,6 @@
       "MOVE_SECRET_POWER",
       "MOVE_SHADOW_BALL",
       "MOVE_SHADOW_CLAW",
-      "MOVE_SHADOW_SNEAK",
       "MOVE_SHOCK_WAVE",
       "MOVE_SLASH",
       "MOVE_SLEEP_TALK",
@@ -71651,10 +71581,6 @@
       {
         "Level": 54,
         "Move": "MOVE_WEATHER_BALL"
-      },
-      {
-        "Level": 55,
-        "Move": "MOVE_EXPLOSION"
       },
       {
         "Level": 59,

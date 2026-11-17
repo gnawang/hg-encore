@@ -3784,10 +3784,6 @@
         "Move": "MOVE_MYSTICAL_FIRE"
       },
       {
-        "Level": 52,
-        "Move": "MOVE_AIR_SLASH"
-      },
-      {
         "Level": 55,
         "Move": "MOVE_DOUBLE_EDGE"
       }
@@ -3822,6 +3818,9 @@
       "MOVE_AROMATHERAPY",
       "MOVE_FAKE_TEARS",
       "MOVE_COVET"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_AIR_SLASH"
     ]
   },
   "SPECIES_BUTTERFREE": {
@@ -7181,10 +7180,6 @@
         "Move": "MOVE_COUNTER"
       },
       {
-        "Level": 28,
-        "Move": "MOVE_ROCK_BLAST"
-      },
-      {
         "Level": 31,
         "Move": "MOVE_TAKE_DOWN"
       },
@@ -7289,10 +7284,6 @@
         "Move": "MOVE_X_SCISSOR"
       },
       {
-        "Level": 32,
-        "Move": "MOVE_TAKE_DOWN"
-      },
-      {
         "Level": 35,
         "Move": "MOVE_THRASH"
       },
@@ -7328,6 +7319,10 @@
       "MOVE_THRASH",
       "MOVE_FEINT_ATTACK",
       "MOVE_FALSE_SWIPE"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_AERIAL_ACE",
+      "MOVE_DUAL_WINGBEAT"
     ]
   },
   "SPECIES_HITMONLEE": {
@@ -8636,10 +8631,6 @@
         "Move": "MOVE_SWIFT"
       },
       {
-        "Level": 12,
-        "Move": "MOVE_AQUA_JET"
-      },
-      {
         "Level": 20,
         "Move": "MOVE_BUBBLE_BEAM"
       },
@@ -8653,10 +8644,6 @@
       },
       {
         "Level": 32,
-        "Move": "MOVE_TAKE_DOWN"
-      },
-      {
-        "Level": 33,
         "Move": "MOVE_LIGHT_SCREEN"
       },
       {
@@ -8666,10 +8653,6 @@
       {
         "Level": 40,
         "Move": "MOVE_PSYCHIC"
-      },
-      {
-        "Level": 42,
-        "Move": "MOVE_LIQUIDATION"
       },
       {
         "Level": 44,
@@ -8684,6 +8667,12 @@
       "MOVE_AURORA_BEAM",
       "MOVE_BARRIER",
       "MOVE_SUPERSONIC"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_AQUA_JET",
+      "MOVE_BULK_UP",
+      "MOVE_LIQUIDATION",
+      "MOVE_TRIPLE_AXEL"
     ]
   },
   "SPECIES_QUAGSIRE": {
@@ -9992,14 +9981,6 @@
         "Move": "MOVE_FEINT"
       },
       {
-        "Level": 1,
-        "Move": "MOVE_CONFUSE_RAY"
-      },
-      {
-        "Level": 1,
-        "Move": "MOVE_SHADOW_SNEAK"
-      },
-      {
         "Level": 4,
         "Move": "MOVE_LEER"
       },
@@ -10036,20 +10017,12 @@
         "Move": "MOVE_BITE"
       },
       {
-        "Level": 32,
-        "Move": "MOVE_PHANTOM_FORCE"
-      },
-      {
         "Level": 33,
         "Move": "MOVE_DOUBLE_TEAM"
       },
       {
         "Level": 36,
         "Move": "MOVE_SLASH"
-      },
-      {
-        "Level": 40,
-        "Move": "MOVE_SHADOW_CLAW"
       },
       {
         "Level": 41,
@@ -10107,6 +10080,11 @@
       "MOVE_FEINT_ATTACK",
       "MOVE_ME_FIRST",
       "MOVE_PUNISHMENT"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_CONFUSE_RAY",
+      "MOVE_PHANTOM_FORCE",
+      "MOVE_SHADOW_SNEAK"
     ]
   },
   "SPECIES_WALREIN": {
@@ -11828,10 +11806,6 @@
         "Move": "MOVE_INFERNO"
       },
       {
-        "Level": 42,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 46,
         "Move": "MOVE_FLARE_BLITZ"
       }
@@ -11852,6 +11826,9 @@
       "MOVE_BEAT_UP",
       "MOVE_DRAGON_DANCE",
       "MOVE_FLARE_BLITZ"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_DRAGON_RUSH"
     ]
   },
   "SPECIES_SQUIRTLE": {
@@ -16939,10 +16916,6 @@
         "Move": "MOVE_RAPID_SPIN"
       },
       {
-        "Level": 12,
-        "Move": "MOVE_AQUA_JET"
-      },
-      {
         "Level": 15,
         "Move": "MOVE_RECOVER"
       },
@@ -16999,6 +16972,9 @@
       "MOVE_AURORA_BEAM",
       "MOVE_BARRIER",
       "MOVE_SUPERSONIC"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_AQUA_JET"
     ]
   },
   "SPECIES_MR_MIME": {
@@ -29022,10 +28998,6 @@
         "Move": "MOVE_FIRE_BLAST"
       },
       {
-        "Level": 44,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 49,
         "Move": "MOVE_FIRE_SPIN"
       },
@@ -29054,6 +29026,9 @@
       "MOVE_BEAT_UP",
       "MOVE_DRAGON_DANCE",
       "MOVE_FLARE_BLITZ"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_DRAGON_RUSH"
     ]
   },
   "SPECIES_STARAPTOR": {
@@ -29834,10 +29809,6 @@
         "Move": "MOVE_FLAMETHROWER"
       },
       {
-        "Level": 42,
-        "Move": "MOVE_DRAGON_RUSH"
-      },
-      {
         "Level": 43,
         "Move": "MOVE_FIRE_SPIN"
       },
@@ -29866,6 +29837,9 @@
       "MOVE_BEAT_UP",
       "MOVE_DRAGON_DANCE",
       "MOVE_FLARE_BLITZ"
+    ],
+    "RemoveMachineMoves": [
+      "MOVE_DRAGON_RUSH"
     ]
   },
   "SPECIES_CATERPIE": {
@@ -37243,10 +37217,6 @@
       {
         "Level": 54,
         "Move": "MOVE_WEATHER_BALL"
-      },
-      {
-        "Level": 55,
-        "Move": "MOVE_EXPLOSION"
       },
       {
         "Level": 59,

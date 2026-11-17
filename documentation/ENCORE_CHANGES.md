@@ -138,6 +138,17 @@ Pokémon's level-up moves from these sources, in order:
 
 Moves a Pokémon gets on a TM it can reuse, such as Roost, Earthquake, Surf, Dragon Claw or Dual Wingbeat, aren't added to level-up: buy the TM.
 
+**Moves only for a Mega.** Encore has no Mega Evolution, so moves Legends Z-A gives a Pokémon only for its Mega's ability or new type are removed
+(`MEGA_ONLY` in `build_level_moves.py`): Heracross's Rock Blast (Skill Link); Starmie's Aqua Jet, Take Down, Liquidation, Triple Axel and Bulk Up,
+and Staryu's Aqua Jet (Huge Power on a physical Mega); Pinsir's Take Down, Aerial Ace and Dual Wingbeat (Aerilate, Bug/Flying); Glalie's
+Explosion (Refrigerate); the Charmander line's Dragon Rush (Mega Charizard X); Clefable's Air Slash (Fairy/Flying); and Absol's Shadow Sneak,
+Phantom Force, Confuse Ray and Shadow Claw (Mega Absol Z, Dark/Ghost). A move goes from level-up unless HeartGold teaches it by level-up, and from
+TM compatibility only when Z-A is the only game that gives it, so HeartGold's and other games' moves stay: Charizard keeps Dragon Claw and the
+Dragon Rush egg move, Glalie the Explosion TM, Absol the Shadow Claw TM, and Heracross the Rock Blast egg move and TM. TM removals go in
+`custom.json` as `RemoveMachineMoves`, which `scripts/build_learnsets.py` subtracts after merging the games (an Encore addition to that
+upstream script). Generic trainers with these Pokémon pick their next level-up moves instead; no key trainer used them. The 8 retyped
+Pokémon keep the Z-A moves of their new types.
+
 Then the level rules apply:
 
 - **Power by level.** An attack's effective power sets the earliest level it can be learned: up to 40 power at any level, 50 from 8, 60 from 14, 70 from 20,
@@ -153,7 +164,7 @@ Then the level rules apply:
   stay, such as priority, pivoting, draining and Freeze-Dry, and HeartGold's and critical moves are never dropped.
 - **Spreading.** An added move that lands on a level another move already has moves up to the next free level, at most 3 later.
 
-Level-up learnsets average 16.8 moves (largest 30, Mime Jr.), down from 18.9; HeartGold's average 13.4. Generic trainers take their moves from these
+Level-up learnsets average 16.7 moves (largest 30, Mime Jr.), down from 18.9; HeartGold's average 13.4. Generic trainers take their moves from these
 learnsets, so their teams follow. Key trainers' hand-picked movesets are unchanged.
 
 To compile-check without a ROM, generate the header with:
